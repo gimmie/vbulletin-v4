@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="gimmie" active="1">
+  <title>Gimmie Loyalty Program</title>
+  <description>Gimmie Loyalty Program Setting for vBulletin</description>
+  <version>1.2.0</version>
+  <url>http://www.vbulletin.org/forum/showthread.php?t=298968</url>
+  <versioncheckurl>http://www.gimmieworld.com/vbulletin/version.html</versioncheckurl>
+  <dependencies>
+  </dependencies>
+  <codes>
+    <code version="1.1.0">
+      <installcode />
+      <uninstallcode />
+    </code>
+  </codes>
+  <templates>
+  </templates>
+  <stylevardfns>
+  </stylevardfns>
+  <stylevars>
+  </stylevars>
+  <plugins>
+    <plugin active="1" executionorder="5">
+      <title>Insert Widget</title>
+      <hookname>global_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/global.php');
+        ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Login</title>
+      <hookname>login_verify_success</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_login.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Post(Ajax)</title>
+      <hookname>newreply_post_ajax</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_post.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Post</title>
+      <hookname>newreply_post_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_post.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Thread</title>
+      <hookname>newthread_post_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_thread.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Poll Post</title>
+      <hookname>poll_post_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_poll.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Poll Vote</title>
+      <hookname>poll_vote_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_votepoll.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Referral</title>
+      <hookname>register_addmember_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_referral.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Per Thread Rating</title>
+      <hookname>threadrate_add</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_ratethread.php');
+  ]]></phpcode>
+    </plugin>
+  </plugins>
+  <phrases>
+    <phrasetype name="vBulletin Settings" fieldname="vbsettings">
+      <phrase name="setting_gimmie_enable_global_desc" date="0" username="Gimmie" version=""><![CDATA[Enable Gimmie System?]]></phrase>
+      <phrase name="setting_gimmie_enable_global_title" date="0" username="Gimmie" version=""><![CDATA[Enable]]></phrase>
+      <phrase name="setting_gimmie_key_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie KEY<br />Get your own point system by signing up <a href="hhttp://www.gimmieworld.com/sign-up/">here</a>.]]></phrase>
+      <phrase name="setting_gimmie_key_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie KEY]]></phrase>
+      <phrase name="setting_gimmie_secret_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie Secret<br />Get your own point system by signing up <a href="hhttp://www.gimmieworld.com/sign-up/">here</a>.]]></phrase>
+      <phrase name="setting_gimmie_secret_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie Secret]]></phrase>      
+      <phrase name="setting_gimmie_trigger_login_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event at login]]></phrase>
+      <phrase name="setting_gimmie_trigger_login_title" date="0" username="Gimmie" version=""><![CDATA[Login]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when poll post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollpost_title" date="0" username="Gimmie" version=""><![CDATA[Poll Post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollvote_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when poll vote]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollvote_title" date="0" username="Gimmie" version=""><![CDATA[Poll Vote]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpost_title" date="0" username="Gimmie" version=""><![CDATA[New Post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new post (own)]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostown_title" date="0" username="Gimmie" version=""><![CDATA[New Post (OWN)]]></phrase>
+      <phrase name="setting_gimmie_trigger_perreferral_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when referral]]></phrase>
+      <phrase name="setting_gimmie_trigger_perreferral_title" date="0" username="Gimmie" version=""><![CDATA[Referral]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthread_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new thread]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthread_title" date="0" username="Gimmie" version=""><![CDATA[New Thread]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadrating_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when thread rating]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadrating_title" date="0" username="Gimmie" version=""><![CDATA[Thread Rating]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadratingreceived_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when thread rating received]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadratingreceived_title" date="0" username="Gimmie" version=""><![CDATA[Thread Rating Received]]></phrase>
+      <phrase name="setting_gimmie_trigger_specificforum_desc" date="0" username="Gimmie" version=""><![CDATA[Enter the forum ID you want to trigger event. (leave blank to ignore)]]></phrase>
+      <phrase name="setting_gimmie_trigger_specificforum_title" date="0" username="Gimmie" version=""><![CDATA[Specify Forum to Trigger]]></phrase>
+      <phrase name="setting_gimmie_trigger_word_desc" date="0" username="Gimmie" version=""><![CDATA[Type all words you want to trigger event when exact words match in post or thread. Use commas to separate words. (leave blank to ignore)]]></phrase>
+      <phrase name="setting_gimmie_trigger_word_title" date="0" username="Gimmie" version=""><![CDATA[Keywords]]></phrase>
+      <phrase name="settinggroup_gimmie" date="0" username="Gimmie" version=""><![CDATA[Gimmie Loyalty Program Setting]]></phrase>
+      <phrase name="setting_gimmie_country_desc" date="0" username="Gimmie" version=""><![CDATA[Select the particular country you wish to lock rewards from.]]></phrase>
+      <phrase name="setting_gimmie_country_title" date="0" username="Gimmie" version=""><![CDATA[Country]]></phrase>
+      <phrase name="setting_gimmie_locale_desc" date="0" username="Gimmie" version=""><![CDATA[Locale of reward content should display if available]]></phrase>
+      <phrase name="setting_gimmie_locale_title" date="0" username="Gimmie" version=""><![CDATA[Locale]]></phrase>       
+      <phrase name="setting_gimmie_web_responsive_desc" date="0" username="Gimmie" version=""><![CDATA[Set to responsive widget.]]></phrase>
+      <phrase name="setting_gimmie_web_responsive_title" date="0" username="Gimmie" version=""><![CDATA[Responsive Widget]]></phrase>               
+      <phrase name="setting_gimmie_custom_css_desc" date="0" username="Gimmie" version=""><![CDATA[Overide the CSS to change the layout of the widget.]]></phrase>
+      <phrase name="setting_gimmie_custom_css_title" date="0" username="Gimmie" version=""><![CDATA[Custom CSS]]></phrase>      
+        
+      <phrase name="setting_gimmie_catalog_desc" date="0" username="Gimmie" version=""><![CDATA[To display reward tab]]></phrase>
+      <phrase name="setting_gimmie_catalog_title" date="0" username="Gimmie" version=""><![CDATA[Display Catalog]]></phrase>
+
+      <phrase name="setting_gimmie_sponsor_link_desc" date="0" username="Gimmie" version=""><![CDATA[To hide catalog sponsor link]]></phrase>
+      <phrase name="setting_gimmie_sponsor_link_title" date="0" username="Gimmie" version=""><![CDATA[Hide Sponsor Link]]></phrase>
+
+      <phrase name="setting_gimmie_profile_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile tab]]></phrase>
+      <phrase name="setting_gimmie_profile_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile]]></phrase>     
+
+      <phrase name="setting_gimmie_profile_redemptions_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile redemptions]]></phrase>
+      <phrase name="setting_gimmie_profile_redemptions_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Redemptions]]></phrase>     
+      
+      <phrase name="setting_gimmie_profile_activities_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile activities]]></phrase>
+      <phrase name="setting_gimmie_profile_activities_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Activities]]></phrase>     
+
+      <phrase name="setting_gimmie_leaderboard_desc" date="0" username="Gimmie" version=""><![CDATA[To display leaderboard]]></phrase>
+      <phrase name="setting_gimmie_leaderboard_title" date="0" username="Gimmie" version=""><![CDATA[Display Leaderboard]]></phrase>
+
+      <phrase name="setting_gimmie_leaderboard_mostpoints_desc" date="0" username="Gimmie" version=""><![CDATA[To display leaderboard - most points]]></phrase>
+      <phrase name="setting_gimmie_leaderboard_mostpoints_title" date="0" username="Gimmie" version=""><![CDATA[Display Leaderboard - Most Points]]></phrase>
+
+      <phrase name="setting_gimmie_leaderboard_mostrewards_desc" date="0" username="Gimmie" version=""><![CDATA[To display leaderboard - most rewards]]></phrase>
+      <phrase name="setting_gimmie_leaderboard_mostrewards_title" date="0" username="Gimmie" version=""><![CDATA[Display Leaderboard - Most Rewards]]></phrase>
+
+      <phrase name="setting_gimmie_leaderboard_mostvalues_desc" date="0" username="Gimmie" version=""><![CDATA[To display leaderboard - most values]]></phrase>
+      <phrase name="setting_gimmie_leaderboard_mostvalues_title" date="0" username="Gimmie" version=""><![CDATA[Display Leaderboard - Most Values]]></phrase>
+
+      <phrase name="setting_gimmie_notification_timeout_desc" date="0" username="Gimmie" version=""><![CDATA[in seconds]]></phrase>
+      <phrase name="setting_gimmie_notification_timeout_title" date="0" username="Gimmie" version=""><![CDATA[Hide Notification]]></phrase>
+
+      <phrase name="setting_gimmie_localize_desc" date="0" username="Gimmie" version=""><![CDATA[Update the content to localize the widget]]></phrase>
+      <phrase name="setting_gimmie_localize_title" date="0" username="Gimmie" version=""><![CDATA[Localize Content]]></phrase>
+           
+      <phrase name="setting_gimmie_help_desc" date="0" username="Gimmie" version=""><![CDATA[Enter the HELP content (allow HTML)]]></phrase>
+      <phrase name="setting_gimmie_help_title" date="0" username="Gimmie" version=""><![CDATA[Help]]></phrase>  
+      
+      <phrase name="setting_gimmie_help_url_desc" date="0" username="Gimmie" version=""><![CDATA[Enter HELP URL if you want to link the HELP button to a page]]></phrase>
+      <phrase name="setting_gimmie_help_url_title" date="0" username="Gimmie" version=""><![CDATA[Help URL]]></phrase>
+                
+        <phrase name="setting_gimmie_custom_css_desc" date="0" username="Gimmie" version=""><![CDATA[Override the CSS to change the layout of the widget.]]></phrase>
+        <phrase name="setting_gimmie_custom_css_title" date="0" username="Gimmie" version=""><![CDATA[Custom CSS]]></phrase>
+  </phrasetype>
+  </phrases>
+  <options>
+    <settinggroup name="gimmie" displayorder="65535">
+      <setting varname="gimmie_enable_global" displayorder="1">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_key" displayorder="2">
+        <datatype>free</datatype>
+        <defaultvalue>e52853bfdcf1d49a0368181245b7</defaultvalue>
+      </setting>
+      <setting varname="gimmie_secret" displayorder="3">
+        <datatype>free</datatype>
+        <defaultvalue>3a95b4f7da128421ca7a15d67d3b</defaultvalue>
+      </setting>      
+      <setting varname="gimmie_trigger_specificforum" displayorder="4">
+        <datatype>free</datatype>
+      </setting>
+      <setting varname="gimmie_trigger_word" displayorder="5">
+        <datatype>free</datatype>
+        <optioncode>textarea</optioncode> 
+      </setting>      
+      <setting varname="gimmie_country" displayorder="6">
+        <datatype>free</datatype>
+        <optioncode><![CDATA[<select name=\"setting[$setting[varname]]\" id=\"sel_setting_$setting[varname]\" tabindex=\"1\">
+           <option value=\"\" " . ($setting['value'] == '' ? 'selected="selected"' : '') . "> -- Auto Detect -- </option>
+          <optgroup label=\"Gimmie Rewards\">
+          <option value=\"SG\" " . ($setting['value'] == 'SG' ? 'selected="selected"' : '') . ">Singapore</option>
+          <option value=\"MY\" " . ($setting['value'] == 'MY' ? 'selected="selected"' : '') . ">Malaysia</option>
+          <option value=\"PH\" " . ($setting['value'] == 'PH' ? 'selected="selected"' : '') . ">Philippines</option>
+          <option value=\"ID\" " . ($setting['value'] == 'ID' ? 'selected="selected"' : '') . ">Indonesia</option>
+          </optgroup>
+          <optgroup label=\"Limited Rewards Available\">
+          <option value=\"AF\" " . ($setting['value'] == 'AF' ? 'selected="selected"' : '') . ">Afghanistan</option>
+          <option value=\"AX\" " . ($setting['value'] == 'AX' ? 'selected="selected"' : '') . ">Aland Islands</option>
+          <option value=\"AL\" " . ($setting['value'] == 'AL' ? 'selected="selected"' : '') . ">Albania</option>
+          <option value=\"DZ\" " . ($setting['value'] == 'DZ' ? 'selected="selected"' : '') . ">Algeria</option>
+          <option value=\"AS\" " . ($setting['value'] == 'AS' ? 'selected="selected"' : '') . ">American Samoa</option>
+          <option value=\"AD\" " . ($setting['value'] == 'AD' ? 'selected="selected"' : '') . ">Andorra</option>
+          <option value=\"AO\" " . ($setting['value'] == 'AO' ? 'selected="selected"' : '') . ">Angola</option>
+          <option value=\"AI\" " . ($setting['value'] == 'AI' ? 'selected="selected"' : '') . ">Anguilla</option>
+          <option value=\"AQ\" " . ($setting['value'] == 'AQ' ? 'selected="selected"' : '') . ">Antarctica</option>
+          <option value=\"AG\" " . ($setting['value'] == 'AG' ? 'selected="selected"' : '') . ">Antigua and Barbuda</option>
+          <option value=\"AR\" " . ($setting['value'] == 'AR' ? 'selected="selected"' : '') . ">Argentina</option>
+          <option value=\"AM\" " . ($setting['value'] == 'AM' ? 'selected="selected"' : '') . ">Armenia</option>
+          <option value=\"AW\" " . ($setting['value'] == 'AW' ? 'selected="selected"' : '') . ">Aruba</option>
+          <option value=\"AU\" " . ($setting['value'] == 'AU' ? 'selected="selected"' : '') . ">Australia</option>
+          <option value=\"AT\" " . ($setting['value'] == 'AT' ? 'selected="selected"' : '') . ">Austria</option>
+          <option value=\"AZ\" " . ($setting['value'] == 'AZ' ? 'selected="selected"' : '') . ">Azerbaijan</option>
+          <option value=\"BS\" " . ($setting['value'] == 'BS' ? 'selected="selected"' : '') . ">Bahamas</option>
+          <option value=\"BH\" " . ($setting['value'] == 'BH' ? 'selected="selected"' : '') . ">Bahrain</option>
+          <option value=\"BD\" " . ($setting['value'] == 'BD' ? 'selected="selected"' : '') . ">Bangladesh</option>
+          <option value=\"BB\" " . ($setting['value'] == 'BB' ? 'selected="selected"' : '') . ">Barbados</option>
+          <option value=\"BY\" " . ($setting['value'] == 'BY' ? 'selected="selected"' : '') . ">Belarus</option>
+          <option value=\"BE\" " . ($setting['value'] == 'BE' ? 'selected="selected"' : '') . ">Belgium</option>
+          <option value=\"BZ\" " . ($setting['value'] == 'BZ' ? 'selected="selected"' : '') . ">Belize</option>
+          <option value=\"BJ\" " . ($setting['value'] == 'BJ' ? 'selected="selected"' : '') . ">Benin</option>
+          <option value=\"BM\" " . ($setting['value'] == 'BM' ? 'selected="selected"' : '') . ">Bermuda</option>
+          <option value=\"BT\" " . ($setting['value'] == 'BT' ? 'selected="selected"' : '') . ">Bhutan</option>
+          <option value=\"BO\" " . ($setting['value'] == 'BO' ? 'selected="selected"' : '') . ">Bolivia</option>
+          <option value=\"BA\" " . ($setting['value'] == 'BA' ? 'selected="selected"' : '') . ">Bosnia and Herzegovina</option>
+          <option value=\"BW\" " . ($setting['value'] == 'BW' ? 'selected="selected"' : '') . ">Botswana</option>
+          <option value=\"BV\" " . ($setting['value'] == 'BV' ? 'selected="selected"' : '') . ">Bouvet Island</option>
+          <option value=\"BR\" " . ($setting['value'] == 'BR' ? 'selected="selected"' : '') . ">Brazil</option>
+          <option value=\"IO\" " . ($setting['value'] == 'IO' ? 'selected="selected"' : '') . ">British Indian Ocean Territory</option>
+          <option value=\"BN\" " . ($setting['value'] == 'BN' ? 'selected="selected"' : '') . ">Brunei Darussalam</option>
+          <option value=\"BG\" " . ($setting['value'] == 'BG' ? 'selected="selected"' : '') . ">Bulgaria</option>
+          <option value=\"BF\" " . ($setting['value'] == 'BF' ? 'selected="selected"' : '') . ">Burkina Faso</option>
+          <option value=\"BI\" " . ($setting['value'] == 'BI' ? 'selected="selected"' : '') . ">Burundi</option>
+          <option value=\"KH\" " . ($setting['value'] == 'KH' ? 'selected="selected"' : '') . ">Cambodia</option>
+          <option value=\"CM\" " . ($setting['value'] == 'CM' ? 'selected="selected"' : '') . ">Cameroon</option>
+          <option value=\"CA\" " . ($setting['value'] == 'CA' ? 'selected="selected"' : '') . ">Canada</option>
+          <option value=\"CV\" " . ($setting['value'] == 'CV' ? 'selected="selected"' : '') . ">Cape Verde</option>
+          <option value=\"KY\" " . ($setting['value'] == 'KY' ? 'selected="selected"' : '') . ">Cayman Islands</option>
+          <option value=\"CF\" " . ($setting['value'] == 'CF' ? 'selected="selected"' : '') . ">Central African Republic</option>
+          <option value=\"TD\" " . ($setting['value'] == 'TD' ? 'selected="selected"' : '') . ">Chad</option>
+          <option value=\"CL\" " . ($setting['value'] == 'CL' ? 'selected="selected"' : '') . ">Chile</option>
+          <option value=\"CN\" " . ($setting['value'] == 'CN' ? 'selected="selected"' : '') . ">China</option>
+          <option value=\"CX\" " . ($setting['value'] == 'CX' ? 'selected="selected"' : '') . ">Christmas Island</option>
+          <option value=\"CC\" " . ($setting['value'] == 'CC' ? 'selected="selected"' : '') . ">Cocos (Keeling) Islands</option>
+          <option value=\"CO\" " . ($setting['value'] == 'CO' ? 'selected="selected"' : '') . ">Colombia</option>
+          <option value=\"KM\" " . ($setting['value'] == 'KM' ? 'selected="selected"' : '') . ">Comoros</option>
+          <option value=\"CG\" " . ($setting['value'] == 'CG' ? 'selected="selected"' : '') . ">Congo</option>
+          <option value=\"CD\" " . ($setting['value'] == 'CD' ? 'selected="selected"' : '') . ">Congo, The Democratic Republic of The</option>
+          <option value=\"CK\" " . ($setting['value'] == 'CK' ? 'selected="selected"' : '') . ">Cook Islands</option>
+          <option value=\"CR\" " . ($setting['value'] == 'CR' ? 'selected="selected"' : '') . ">Costa Rica</option>
+          <option value=\"CI\" " . ($setting['value'] == 'CI' ? 'selected="selected"' : '') . ">Cote D'ivoire</option>
+          <option value=\"HR\" " . ($setting['value'] == 'HR' ? 'selected="selected"' : '') . ">Croatia</option>
+          <option value=\"CU\" " . ($setting['value'] == 'CU' ? 'selected="selected"' : '') . ">Cuba</option>
+          <option value=\"CY\" " . ($setting['value'] == 'CY' ? 'selected="selected"' : '') . ">Cyprus</option>
+          <option value=\"CZ\" " . ($setting['value'] == 'CZ' ? 'selected="selected"' : '') . ">Czech Republic</option>
+          <option value=\"DK\" " . ($setting['value'] == 'DK' ? 'selected="selected"' : '') . ">Denmark</option>
+          <option value=\"DJ\" " . ($setting['value'] == 'DJ' ? 'selected="selected"' : '') . ">Djibouti</option>
+          <option value=\"DM\" " . ($setting['value'] == 'DM' ? 'selected="selected"' : '') . ">Dominica</option>
+          <option value=\"DO\" " . ($setting['value'] == 'DO' ? 'selected="selected"' : '') . ">Dominican Republic</option>
+          <option value=\"EC\" " . ($setting['value'] == 'EC' ? 'selected="selected"' : '') . ">Ecuador</option>
+          <option value=\"EG\" " . ($setting['value'] == 'EG' ? 'selected="selected"' : '') . ">Egypt</option>
+          <option value=\"SV\" " . ($setting['value'] == 'SV' ? 'selected="selected"' : '') . ">El Salvador</option>
+          <option value=\"GQ\" " . ($setting['value'] == 'GQ' ? 'selected="selected"' : '') . ">Equatorial Guinea</option>
+          <option value=\"ER\" " . ($setting['value'] == 'ER' ? 'selected="selected"' : '') . ">Eritrea</option>
+          <option value=\"EE\" " . ($setting['value'] == 'EE' ? 'selected="selected"' : '') . ">Estonia</option>
+          <option value=\"ET\" " . ($setting['value'] == 'ET' ? 'selected="selected"' : '') . ">Ethiopia</option>
+          <option value=\"FK\" " . ($setting['value'] == 'FK' ? 'selected="selected"' : '') . ">Falkland Islands (Malvinas)</option>
+          <option value=\"FO\" " . ($setting['value'] == 'FO' ? 'selected="selected"' : '') . ">Faroe Islands</option>
+          <option value=\"FJ\" " . ($setting['value'] == 'FJ' ? 'selected="selected"' : '') . ">Fiji</option>
+          <option value=\"FI\" " . ($setting['value'] == 'FI' ? 'selected="selected"' : '') . ">Finland</option>
+          <option value=\"FR\" " . ($setting['value'] == 'FR' ? 'selected="selected"' : '') . ">France</option>
+          <option value=\"GF\" " . ($setting['value'] == 'GF' ? 'selected="selected"' : '') . ">French Guiana</option>
+          <option value=\"PF\" " . ($setting['value'] == 'PF' ? 'selected="selected"' : '') . ">French Polynesia</option>
+          <option value=\"TF\" " . ($setting['value'] == 'TF' ? 'selected="selected"' : '') . ">French Southern Territories</option>
+          <option value=\"GA\" " . ($setting['value'] == 'GA' ? 'selected="selected"' : '') . ">Gabon</option>
+          <option value=\"GM\" " . ($setting['value'] == 'GM' ? 'selected="selected"' : '') . ">Gambia</option>
+          <option value=\"GE\" " . ($setting['value'] == 'GE' ? 'selected="selected"' : '') . ">Georgia</option>
+          <option value=\"DE\" " . ($setting['value'] == 'DE' ? 'selected="selected"' : '') . ">Germany</option>
+          <option value=\"GH\" " . ($setting['value'] == 'GH' ? 'selected="selected"' : '') . ">Ghana</option>
+          <option value=\"GI\" " . ($setting['value'] == 'GI' ? 'selected="selected"' : '') . ">Gibraltar</option>
+          <option value=\"GR\" " . ($setting['value'] == 'GR' ? 'selected="selected"' : '') . ">Greece</option>
+          <option value=\"GL\" " . ($setting['value'] == 'GL' ? 'selected="selected"' : '') . ">Greenland</option>
+          <option value=\"GD\" " . ($setting['value'] == 'GD' ? 'selected="selected"' : '') . ">Grenada</option>
+          <option value=\"GP\" " . ($setting['value'] == 'GP' ? 'selected="selected"' : '') . ">Guadeloupe</option>
+          <option value=\"GU\" " . ($setting['value'] == 'GU' ? 'selected="selected"' : '') . ">Guam</option>
+          <option value=\"GT\" " . ($setting['value'] == 'GT' ? 'selected="selected"' : '') . ">Guatemala</option>
+          <option value=\"GG\" " . ($setting['value'] == 'GG' ? 'selected="selected"' : '') . ">Guernsey</option>
+          <option value=\"GN\" " . ($setting['value'] == 'GN' ? 'selected="selected"' : '') . ">Guinea</option>
+          <option value=\"GW\" " . ($setting['value'] == 'GW' ? 'selected="selected"' : '') . ">Guinea-bissau</option>
+          <option value=\"GY\" " . ($setting['value'] == 'GY' ? 'selected="selected"' : '') . ">Guyana</option>
+          <option value=\"HT\" " . ($setting['value'] == 'HT' ? 'selected="selected"' : '') . ">Haiti</option>
+          <option value=\"HM\" " . ($setting['value'] == 'HM' ? 'selected="selected"' : '') . ">Heard Island and Mcdonald Islands</option>
+          <option value=\"VA\" " . ($setting['value'] == 'VA' ? 'selected="selected"' : '') . ">Holy See (Vatican City State)</option>
+          <option value=\"HN\" " . ($setting['value'] == 'HN' ? 'selected="selected"' : '') . ">Honduras</option>
+          <option value=\"HK\" " . ($setting['value'] == 'HK' ? 'selected="selected"' : '') . ">Hong Kong</option>
+          <option value=\"HU\" " . ($setting['value'] == 'HU' ? 'selected="selected"' : '') . ">Hungary</option>
+          <option value=\"IS\" " . ($setting['value'] == 'IS' ? 'selected="selected"' : '') . ">Iceland</option>
+          <option value=\"IN\" " . ($setting['value'] == 'IN' ? 'selected="selected"' : '') . ">India</option>
+          <option value=\"IR\" " . ($setting['value'] == 'IR' ? 'selected="selected"' : '') . ">Iran, Islamic Republic of</option>
+          <option value=\"IQ\" " . ($setting['value'] == 'IQ' ? 'selected="selected"' : '') . ">Iraq</option>
+          <option value=\"IE\" " . ($setting['value'] == 'IE' ? 'selected="selected"' : '') . ">Ireland</option>
+          <option value=\"IM\" " . ($setting['value'] == 'IM' ? 'selected="selected"' : '') . ">Isle of Man</option>
+          <option value=\"IL\" " . ($setting['value'] == 'IL' ? 'selected="selected"' : '') . ">Israel</option>
+          <option value=\"IT\" " . ($setting['value'] == 'IT' ? 'selected="selected"' : '') . ">Italy</option>
+          <option value=\"JM\" " . ($setting['value'] == 'JM' ? 'selected="selected"' : '') . ">Jamaica</option>
+          <option value=\"JP\" " . ($setting['value'] == 'JP' ? 'selected="selected"' : '') . ">Japan</option>
+          <option value=\"JE\" " . ($setting['value'] == 'JE' ? 'selected="selected"' : '') . ">Jersey</option>
+          <option value=\"JO\" " . ($setting['value'] == 'JO' ? 'selected="selected"' : '') . ">Jordan</option>
+          <option value=\"KZ\" " . ($setting['value'] == 'KZ' ? 'selected="selected"' : '') . ">Kazakhstan</option>
+          <option value=\"KE\" " . ($setting['value'] == 'KE' ? 'selected="selected"' : '') . ">Kenya</option>
+          <option value=\"KI\" " . ($setting['value'] == 'KI' ? 'selected="selected"' : '') . ">Kiribati</option>
+          <option value=\"KP\" " . ($setting['value'] == 'KP' ? 'selected="selected"' : '') . ">Korea, Democratic People's Republic of</option>
+          <option value=\"KR\" " . ($setting['value'] == 'KR' ? 'selected="selected"' : '') . ">Korea, Republic of</option>
+          <option value=\"KW\" " . ($setting['value'] == 'KW' ? 'selected="selected"' : '') . ">Kuwait</option>
+          <option value=\"KG\" " . ($setting['value'] == 'KG' ? 'selected="selected"' : '') . ">Kyrgyzstan</option>
+          <option value=\"LA\" " . ($setting['value'] == 'LA' ? 'selected="selected"' : '') . ">Lao People's Democratic Republic</option>
+          <option value=\"LV\" " . ($setting['value'] == 'LV' ? 'selected="selected"' : '') . ">Latvia</option>
+          <option value=\"LB\" " . ($setting['value'] == 'LB' ? 'selected="selected"' : '') . ">Lebanon</option>
+          <option value=\"LS\" " . ($setting['value'] == 'LS' ? 'selected="selected"' : '') . ">Lesotho</option>
+          <option value=\"LR\" " . ($setting['value'] == 'LR' ? 'selected="selected"' : '') . ">Liberia</option>
+          <option value=\"LY\" " . ($setting['value'] == 'LY' ? 'selected="selected"' : '') . ">Libyan Arab Jamahiriya</option>
+          <option value=\"LI\" " . ($setting['value'] == 'LI' ? 'selected="selected"' : '') . ">Liechtenstein</option>
+          <option value=\"LT\" " . ($setting['value'] == 'LT' ? 'selected="selected"' : '') . ">Lithuania</option>
+          <option value=\"LU\" " . ($setting['value'] == 'LU' ? 'selected="selected"' : '') . ">Luxembourg</option>
+          <option value=\"MO\" " . ($setting['value'] == 'MO' ? 'selected="selected"' : '') . ">Macao</option>
+          <option value=\"MK\" " . ($setting['value'] == 'MK' ? 'selected="selected"' : '') . ">Macedonia, The Former Yugoslav Republic of</option>
+          <option value=\"MG\" " . ($setting['value'] == 'MG' ? 'selected="selected"' : '') . ">Madagascar</option>
+          <option value=\"MW\" " . ($setting['value'] == 'MW' ? 'selected="selected"' : '') . ">Malawi</option>
+          <option value=\"MV\" " . ($setting['value'] == 'MV' ? 'selected="selected"' : '') . ">Maldives</option>
+          <option value=\"ML\" " . ($setting['value'] == 'ML' ? 'selected="selected"' : '') . ">Mali</option>
+          <option value=\"MT\" " . ($setting['value'] == 'MT' ? 'selected="selected"' : '') . ">Malta</option>
+          <option value=\"MH\" " . ($setting['value'] == 'MH' ? 'selected="selected"' : '') . ">Marshall Islands</option>
+          <option value=\"MQ\" " . ($setting['value'] == 'MQ' ? 'selected="selected"' : '') . ">Martinique</option>
+          <option value=\"MR\" " . ($setting['value'] == 'MR' ? 'selected="selected"' : '') . ">Mauritania</option>
+          <option value=\"MU\" " . ($setting['value'] == 'MU' ? 'selected="selected"' : '') . ">Mauritius</option>
+          <option value=\"YT\" " . ($setting['value'] == 'YT' ? 'selected="selected"' : '') . ">Mayotte</option>
+          <option value=\"MX\" " . ($setting['value'] == 'MX' ? 'selected="selected"' : '') . ">Mexico</option>
+          <option value=\"FM\" " . ($setting['value'] == 'FM' ? 'selected="selected"' : '') . ">Micronesia, Federated States of</option>
+          <option value=\"MD\" " . ($setting['value'] == 'MD' ? 'selected="selected"' : '') . ">Moldova, Republic of</option>
+          <option value=\"MC\" " . ($setting['value'] == 'MC' ? 'selected="selected"' : '') . ">Monaco</option>
+          <option value=\"MN\" " . ($setting['value'] == 'MN' ? 'selected="selected"' : '') . ">Mongolia</option>
+          <option value=\"ME\" " . ($setting['value'] == 'ME' ? 'selected="selected"' : '') . ">Montenegro</option>
+          <option value=\"MS\" " . ($setting['value'] == 'MS' ? 'selected="selected"' : '') . ">Montserrat</option>
+          <option value=\"MA\" " . ($setting['value'] == 'MA' ? 'selected="selected"' : '') . ">Morocco</option>
+          <option value=\"MZ\" " . ($setting['value'] == 'MZ' ? 'selected="selected"' : '') . ">Mozambique</option>
+          <option value=\"MM\" " . ($setting['value'] == 'MM' ? 'selected="selected"' : '') . ">Myanmar</option>
+          <option value=\"NA\" " . ($setting['value'] == 'NA' ? 'selected="selected"' : '') . ">Namibia</option>
+          <option value=\"NR\" " . ($setting['value'] == 'NR' ? 'selected="selected"' : '') . ">Nauru</option>
+          <option value=\"NP\" " . ($setting['value'] == 'NP' ? 'selected="selected"' : '') . ">Nepal</option>
+          <option value=\"NL\" " . ($setting['value'] == 'NL' ? 'selected="selected"' : '') . ">Netherlands</option>
+          <option value=\"AN\" " . ($setting['value'] == 'AN' ? 'selected="selected"' : '') . ">Netherlands Antilles</option>
+          <option value=\"NC\" " . ($setting['value'] == 'NC' ? 'selected="selected"' : '') . ">New Caledonia</option>
+          <option value=\"NZ\" " . ($setting['value'] == 'NZ' ? 'selected="selected"' : '') . ">New Zealand</option>
+          <option value=\"NI\" " . ($setting['value'] == 'NI' ? 'selected="selected"' : '') . ">Nicaragua</option>
+          <option value=\"NE\" " . ($setting['value'] == 'NE' ? 'selected="selected"' : '') . ">Niger</option>
+          <option value=\"NG\" " . ($setting['value'] == 'NG' ? 'selected="selected"' : '') . ">Nigeria</option>
+          <option value=\"NU\" " . ($setting['value'] == 'NU' ? 'selected="selected"' : '') . ">Niue</option>
+          <option value=\"NF\" " . ($setting['value'] == 'NF' ? 'selected="selected"' : '') . ">Norfolk Island</option>
+          <option value=\"MP\" " . ($setting['value'] == 'MP' ? 'selected="selected"' : '') . ">Northern Mariana Islands</option>
+          <option value=\"NO\" " . ($setting['value'] == 'NO' ? 'selected="selected"' : '') . ">Norway</option>
+          <option value=\"OM\" " . ($setting['value'] == 'OM' ? 'selected="selected"' : '') . ">Oman</option>
+          <option value=\"PK\" " . ($setting['value'] == 'PK' ? 'selected="selected"' : '') . ">Pakistan</option>
+          <option value=\"PW\" " . ($setting['value'] == 'PW' ? 'selected="selected"' : '') . ">Palau</option>
+          <option value=\"PS\" " . ($setting['value'] == 'PS' ? 'selected="selected"' : '') . ">Palestinian Territory, Occupied</option>
+          <option value=\"PA\" " . ($setting['value'] == 'PA' ? 'selected="selected"' : '') . ">Panama</option>
+          <option value=\"PG\" " . ($setting['value'] == 'PG' ? 'selected="selected"' : '') . ">Papua New Guinea</option>
+          <option value=\"PY\" " . ($setting['value'] == 'PY' ? 'selected="selected"' : '') . ">Paraguay</option>
+          <option value=\"PE\" " . ($setting['value'] == 'PE' ? 'selected="selected"' : '') . ">Peru</option>
+          <option value=\"PN\" " . ($setting['value'] == 'PN' ? 'selected="selected"' : '') . ">Pitcairn</option>
+          <option value=\"PL\" " . ($setting['value'] == 'PL' ? 'selected="selected"' : '') . ">Poland</option>
+          <option value=\"PT\" " . ($setting['value'] == 'PT' ? 'selected="selected"' : '') . ">Portugal</option>
+          <option value=\"PR\" " . ($setting['value'] == 'PR' ? 'selected="selected"' : '') . ">Puerto Rico</option>
+          <option value=\"QA\" " . ($setting['value'] == 'QA' ? 'selected="selected"' : '') . ">Qatar</option>
+          <option value=\"RE\" " . ($setting['value'] == 'RE' ? 'selected="selected"' : '') . ">Reunion</option>
+          <option value=\"RO\" " . ($setting['value'] == 'RO' ? 'selected="selected"' : '') . ">Romania</option>
+          <option value=\"RU\" " . ($setting['value'] == 'RU' ? 'selected="selected"' : '') . ">Russian Federation</option>
+          <option value=\"RW\" " . ($setting['value'] == 'RW' ? 'selected="selected"' : '') . ">Rwanda</option>
+          <option value=\"SH\" " . ($setting['value'] == 'SH' ? 'selected="selected"' : '') . ">Saint Helena</option>
+          <option value=\"KN\" " . ($setting['value'] == 'KN' ? 'selected="selected"' : '') . ">Saint Kitts and Nevis</option>
+          <option value=\"LC\" " . ($setting['value'] == 'LC' ? 'selected="selected"' : '') . ">Saint Lucia</option>
+          <option value=\"PM\" " . ($setting['value'] == 'PM' ? 'selected="selected"' : '') . ">Saint Pierre and Miquelon</option>
+          <option value=\"VC\" " . ($setting['value'] == 'VC' ? 'selected="selected"' : '') . ">Saint Vincent and The Grenadines</option>
+          <option value=\"WS\" " . ($setting['value'] == 'WS' ? 'selected="selected"' : '') . ">Samoa</option>
+          <option value=\"SM\" " . ($setting['value'] == 'SM' ? 'selected="selected"' : '') . ">San Marino</option>
+          <option value=\"ST\" " . ($setting['value'] == 'ST' ? 'selected="selected"' : '') . ">Sao Tome and Principe</option>
+          <option value=\"SA\" " . ($setting['value'] == 'SA' ? 'selected="selected"' : '') . ">Saudi Arabia</option>
+          <option value=\"SN\" " . ($setting['value'] == 'SN' ? 'selected="selected"' : '') . ">Senegal</option>
+          <option value=\"RS\" " . ($setting['value'] == 'RS' ? 'selected="selected"' : '') . ">Serbia</option>
+          <option value=\"SC\" " . ($setting['value'] == 'SC' ? 'selected="selected"' : '') . ">Seychelles</option>
+          <option value=\"SL\" " . ($setting['value'] == 'SL' ? 'selected="selected"' : '') . ">Sierra Leone</option>
+          <option value=\"SK\" " . ($setting['value'] == 'SK' ? 'selected="selected"' : '') . ">Slovakia</option>
+          <option value=\"SI\" " . ($setting['value'] == 'SI' ? 'selected="selected"' : '') . ">Slovenia</option>
+          <option value=\"SB\" " . ($setting['value'] == 'SB' ? 'selected="selected"' : '') . ">Solomon Islands</option>
+          <option value=\"SO\" " . ($setting['value'] == 'SO' ? 'selected="selected"' : '') . ">Somalia</option>
+          <option value=\"ZA\" " . ($setting['value'] == 'ZA' ? 'selected="selected"' : '') . ">South Africa</option>
+          <option value=\"GS\" " . ($setting['value'] == 'GS' ? 'selected="selected"' : '') . ">South Georgia and The South Sandwich Islands</option>
+          <option value=\"ES\" " . ($setting['value'] == 'ES' ? 'selected="selected"' : '') . ">Spain</option>
+          <option value=\"LK\" " . ($setting['value'] == 'LK' ? 'selected="selected"' : '') . ">Sri Lanka</option>
+          <option value=\"SD\" " . ($setting['value'] == 'SD' ? 'selected="selected"' : '') . ">Sudan</option>
+          <option value=\"SR\" " . ($setting['value'] == 'SR' ? 'selected="selected"' : '') . ">Suriname</option>
+          <option value=\"SJ\" " . ($setting['value'] == 'SJ' ? 'selected="selected"' : '') . ">Svalbard and Jan Mayen</option>
+          <option value=\"SZ\" " . ($setting['value'] == 'SZ' ? 'selected="selected"' : '') . ">Swaziland</option>
+          <option value=\"SE\" " . ($setting['value'] == 'SE' ? 'selected="selected"' : '') . ">Sweden</option>
+          <option value=\"CH\" " . ($setting['value'] == 'CH' ? 'selected="selected"' : '') . ">Switzerland</option>
+          <option value=\"SY\" " . ($setting['value'] == 'SY' ? 'selected="selected"' : '') . ">Syrian Arab Republic</option>
+          <option value=\"TW\" " . ($setting['value'] == 'TW' ? 'selected="selected"' : '') . ">Taiwan, Province of China</option>
+          <option value=\"TJ\" " . ($setting['value'] == 'TJ' ? 'selected="selected"' : '') . ">Tajikistan</option>
+          <option value=\"TZ\" " . ($setting['value'] == 'TZ' ? 'selected="selected"' : '') . ">Tanzania, United Republic of</option>
+          <option value=\"TH\" " . ($setting['value'] == 'TH' ? 'selected="selected"' : '') . ">Thailand</option>
+          <option value=\"TL\" " . ($setting['value'] == 'TL' ? 'selected="selected"' : '') . ">Timor-leste</option>
+          <option value=\"TG\" " . ($setting['value'] == 'TG' ? 'selected="selected"' : '') . ">Togo</option>
+          <option value=\"TK\" " . ($setting['value'] == 'TK' ? 'selected="selected"' : '') . ">Tokelau</option>
+          <option value=\"TO\" " . ($setting['value'] == 'TO' ? 'selected="selected"' : '') . ">Tonga</option>
+          <option value=\"TT\" " . ($setting['value'] == 'TT' ? 'selected="selected"' : '') . ">Trinidad and Tobago</option>
+          <option value=\"TN\" " . ($setting['value'] == 'TN' ? 'selected="selected"' : '') . ">Tunisia</option>
+          <option value=\"TR\" " . ($setting['value'] == 'TR' ? 'selected="selected"' : '') . ">Turkey</option>
+          <option value=\"TM\" " . ($setting['value'] == 'TM' ? 'selected="selected"' : '') . ">Turkmenistan</option>
+          <option value=\"TC\" " . ($setting['value'] == 'TC' ? 'selected="selected"' : '') . ">Turks and Caicos Islands</option>
+          <option value=\"TV\" " . ($setting['value'] == 'TV' ? 'selected="selected"' : '') . ">Tuvalu</option>
+          <option value=\"UG\" " . ($setting['value'] == 'UG' ? 'selected="selected"' : '') . ">Uganda</option>
+          <option value=\"UA\" " . ($setting['value'] == 'UA' ? 'selected="selected"' : '') . ">Ukraine</option>
+          <option value=\"AE\" " . ($setting['value'] == 'AE' ? 'selected="selected"' : '') . ">United Arab Emirates</option>
+          <option value=\"GB\" " . ($setting['value'] == 'GB' ? 'selected="selected"' : '') . ">United Kingdom</option>
+          <option value=\"US\" " . ($setting['value'] == 'US' ? 'selected="selected"' : '') . ">United States</option>
+          <option value=\"UM\" " . ($setting['value'] == 'UM' ? 'selected="selected"' : '') . ">United States Minor Outlying Islands</option>
+          <option value=\"UY\" " . ($setting['value'] == 'UY' ? 'selected="selected"' : '') . ">Uruguay</option>
+          <option value=\"UZ\" " . ($setting['value'] == 'UZ' ? 'selected="selected"' : '') . ">Uzbekistan</option>
+          <option value=\"VU\" " . ($setting['value'] == 'VU' ? 'selected="selected"' : '') . ">Vanuatu</option>
+          <option value=\"VE\" " . ($setting['value'] == 'VE' ? 'selected="selected"' : '') . ">Venezuela</option>
+          <option value=\"VN\" " . ($setting['value'] == 'VN' ? 'selected="selected"' : '') . ">Viet Nam</option>
+          <option value=\"VG\" " . ($setting['value'] == 'VG' ? 'selected="selected"' : '') . ">Virgin Islands, British</option>
+          <option value=\"VI\" " . ($setting['value'] == 'VI' ? 'selected="selected"' : '') . ">Virgin Islands, U.S.</option>
+          <option value=\"WF\" " . ($setting['value'] == 'WF' ? 'selected="selected"' : '') . ">Wallis and Futuna</option>
+          <option value=\"EH\" " . ($setting['value'] == 'EH' ? 'selected="selected"' : '') . ">Western Sahara</option>
+          <option value=\"YE\" " . ($setting['value'] == 'YE' ? 'selected="selected"' : '') . ">Yemen</option>
+          <option value=\"ZM\" " . ($setting['value'] == 'ZM' ? 'selected="selected"' : '') . ">Zambia</option>
+          <option value=\"ZW\" " . ($setting['value'] == 'ZW' ? 'selected="selected"' : '') . ">Zimbabwe</option>
+          </optgroup>
+        </select>]]></optioncode>
+        <defaultvalue></defaultvalue>
+      </setting>
+      <setting varname="gimmie_locale" displayorder="7">
+        <datatype>free</datatype>
+        <defaultvalue>en</defaultvalue>
+      </setting>            
+      <setting varname="gimmie_trigger_login" displayorder="7">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perthread" displayorder="8">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perpost" displayorder="9">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perpostown" displayorder="10">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perthreadrating" displayorder="11">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perthreadratingreceived" displayorder="12">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perpollpost" displayorder="13">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perpollvote" displayorder="14">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perreferral" displayorder="15">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_web_responsive" displayorder="16">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>      
+      <setting varname="gimmie_notification_timeout" displayorder="17">
+        <datatype>free</datatype>
+        <defaultvalue>10</defaultvalue>
+      </setting>        
+      <setting varname="gimmie_web_responsive" displayorder="18">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>            
+      <setting varname="gimmie_catalog" displayorder="19">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting> 
+      <setting varname="gimmie_sponsor_link" displayorder="20">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>      
+      <setting varname="gimmie_profile" displayorder="21">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_profile_redemptions" displayorder="22">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting> 
+      <setting varname="gimmie_profile_activities" displayorder="25">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard" displayorder="26">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>      
+      <setting varname="gimmie_leaderboard_mostpoints" displayorder="27">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard_mostrewards" displayorder="28">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard_mostvalues" displayorder="29">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>                        
+      <setting varname="gimmie_custom_css" displayorder="30">
+        <datatype>free</datatype>
+        <optioncode>textarea</optioncode>
+      </setting>
+      <setting varname="gimmie_localize" displayorder="31">
+        <datatype>free</datatype>
+        <optioncode>textarea</optioncode>
+        <defaultvalue><![CDATA[
+"empty_reward"              : "There are no rewards in the catalog right now. Please check back again while we add more rewards.",
+
+"loading_reward"            : "Loading Rewards",
+
+"error"                     : "Something wrong, please close and open again later.",
+
+"login_title_text"          : "Login/Sign up",
+
+"login_subline"             : "to redeem rewards",
+
+"login_headline"            : "<p>Please login or signup to</p><p>earn points and redeem rewards</p>",
+
+"login_button"              : "Login/Signup <img data-src='{{root}}navigation-arrow.png'>",
+
+"help_link"                 : "How do I earn points?",
+
+"reward_tab_title"          : "Reward",
+
+"reward_tab_profile"        : "Profile",
+
+"reward_tab_leaderboard"    : "Leaderboard",
+
+"points"                    : "points",
+
+"loading"                   : "Loading",
+
+"reached_highest_level"     : "Reached highest level",
+
+"points_to_level"           : "points to Level",
+
+"badges_title"              : "Badges",
+
+"mayorships_title"          : "Mayorships",
+
+"redemptions_title"         : "Redemptions",
+
+"activities_title"          : "Activities",
+
+"badge"                     : "Badge",
+
+"mystery_badge"             : "Mystery Badge",
+
+"expires"                   : "Expires",
+
+"redeemed"                  : "Redeemed",
+
+"expired"                   : "Expired",
+
+"loading_activities"        : "Loading Activities",
+
+"empty_activities"          : "<p>You don't have recent activities.</p><p>When you earn points, badges or rewards a log of activities is shown here.</p>",
+
+"fully_redeemed"            : "FULLY REDEEMED",
+
+"featured_reward"           : "FEATURED REWARD",
+
+"sponsor_here"              : "<p>Want to list your reward here?</p><small>Click for details.</small>",
+
+"back_to_catalog"           : "&laquo; All {{data.category_name}} Rewards",
+
+"redeem_button"             : "Redeem with {{data.points}} pts",
+
+"use_reward_now"            : "Use Reward Now",
+
+"description"               : "Description",
+
+"fineprint"                 : "Fine Print",
+
+"user_points"               : "You have <span class=\"gimmie-user-points\">{{user.points}}</span> pts",
+
+"see_all_redemptions"       : "See All Redemptions",
+
+"havent_redeemed"           : "<p>You haven't redeemed any rewards.</p><p>View your redemptions here after redeeming a reward from the catalog.</p>",
+
+"see_all_mayorships"        : "See All Mayorships",
+
+"empty_mayorships"          : "<p>You don't have any mayorships</p><p>Mayorships are given to the most active user at specific venues in a period of 30 days</p>",
+
+"see_all_badges"            : "See All Badges",
+
+"loading_badges"            : "Loading Badges",
+
+"empty_badges"              : "<p>You don't have any badges.</p><p>Badges are rewarded when you do centain actions.</p>",
+
+"see_all_activities"        : "See All Activities",
+
+"loading_recent_activities" : "Loading recent activities",
+
+"all_time_points"           : "all-time points:",
+
+"most_points"               : "Most Points",
+
+"most_rewards"              : "Most Rewards",
+
+"most_reward_value"         : "Most Reward Value",
+
+"loading_leaderboard"       : "Loading Leaderboard"]]></defaultvalue>
+      </setting>
+      <setting varname="gimmie_help" displayorder="32">
+        <datatype>free</datatype>
+        <optioncode>textarea</optioncode>
+      </setting> 
+      <setting varname="gimmie_help_url" displayorder="33">
+        <datatype>free</datatype>
+      </setting>             
+    </settinggroup>
+  </options>
+  <helptopics>
+  </helptopics>
+  <cronentries>
+  </cronentries>
+  <faqentries>
+  </faqentries>
+  <navigation>
+  </navigation>
+</product>
