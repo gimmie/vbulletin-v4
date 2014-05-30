@@ -177,11 +177,11 @@
       </setting>
       <setting varname="gimmie_key" displayorder="2">
         <datatype>free</datatype>
-        <defaultvalue>e52853bfdcf1d49a0368181245b7</defaultvalue>
+        <defaultvalue>CONSUMER KEY</defaultvalue>
       </setting>
       <setting varname="gimmie_secret" displayorder="3">
         <datatype>free</datatype>
-        <defaultvalue>3a95b4f7da128421ca7a15d67d3b</defaultvalue>
+        <defaultvalue>CONSUMER SECRET</defaultvalue>
       </setting>      
       <setting varname="gimmie_trigger_specificforum" displayorder="4">
         <datatype>free</datatype>
