@@ -2,15 +2,15 @@
 $gimmie = Array(
   "gimmie_key" => $vbulletin->options['gimmie_key'],
   "gimmie_secret" => $vbulletin->options['gimmie_secret'],
-  "gimmie_trigger_login" => "did_vbulletin_login",
-  "gimmie_trigger_perpollpost" => "did_vbulletin_poll",
-  "gimmie_trigger_perpost" => "did_vbulletin_post",
-  "gimmie_trigger_perpostown" => "did_vbulletin_post",
-  "gimmie_trigger_perthreadrating" => "did_vbulletin_rate_thread",
-  "gimmie_trigger_perthreadratingreceived" => "did_vbulletin_rate_thread_received",
-  "gimmie_trigger_perreferral" => "did_vbulletin_referral",
-  "gimmie_trigger_perthread" => "did_vbulletin_thread",
-  "gimmie_trigger_perpollvote" => "did_vbulletin_poll_vote"
+  "gimmie_trigger_login" => "vbulletin_login",
+  "gimmie_trigger_perpollpost" => "vbulletin_create_poll",
+  "gimmie_trigger_perpost" => "vbulletin__create_post",
+  "gimmie_trigger_perpostown" => "vbulletin_create_post",
+  "gimmie_trigger_perthreadrating" => "vbulletin_rate_thread",
+  "gimmie_trigger_perthreadratingreceived" => "vbulletin_rate_thread_received",
+  "gimmie_trigger_perreferral" => "vbulletin_referral",
+  "gimmie_trigger_perthread" => "vbulletin_create_thread",
+  "gimmie_trigger_perpollvote" => "vbulletin_vote_poll"
 );
 
 $gimmie_widget_setting = '<div id="gimmie-root"></div>
