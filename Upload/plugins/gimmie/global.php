@@ -46,7 +46,9 @@ if ($vbulletin->options['gimmie_enable_global'] == 1)
 
     if ($country == "")
     {
-      $country = file_get_contents("http://api.wipmania.com/".getRealIpAddr()."?http://".$_SERVER['HTTP_HOST']);
+      $country_json = fetch_web_data("http://location.gimmie.io/country?".getRealIpAddr());
+      $country_obj = json_decode($country_json, true);
+      $country = $country_obj['country_code2'];
     }
     
     $help = $vbulletin->options['gimmie_help'];

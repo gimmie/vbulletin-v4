@@ -24,7 +24,7 @@ if (!empty($user['userid']) && $vbulletin->options['gimmie_enable_global'] == 1 
   $acc_req->sign_request($sig_method, $consumer, $token);
 
 
-  file_get_contents($acc_req->to_url());
+  fetch_web_data($acc_req->to_url());
   return;
 }
 

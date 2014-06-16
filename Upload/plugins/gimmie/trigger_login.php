@@ -24,7 +24,7 @@ $endpoint           = "https://api.gimmieworld.com/1/trigger.json?async=webnotif
 $acc_req          = OAuthRequest::from_consumer_and_token($consumer, $token, "GET", $endpoint, $params);
 $acc_req->sign_request($sig_method, $consumer, $token);
 
-file_get_contents($acc_req->to_url());
+fetch_web_data($acc_req->to_url());
 return;
 
 }

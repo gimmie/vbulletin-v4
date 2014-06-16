@@ -29,24 +29,8 @@ if (in_array($threadinfo[forumid], $forumarray) || $vbulletin->options['gimmie_t
     $endpoint           = "https://api.gimmieworld.com/1/trigger.json?async=webnotify&source_uid=".$vbulletin->options['bburl']."&event_name=" . $gimmie['gimmie_trigger_perthreadrating'];
     $acc_req          = OAuthRequest::from_consumer_and_token($consumer, $token, "GET", $endpoint, $params);
     $acc_req->sign_request($sig_method, $consumer, $token);
-
-
-    $c = curl_init();
-    curl_setopt($c, CURLOPT_URL, $acc_req->to_url());
-    curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);  // Follow the redirects (needed for mod_rewrite)
-    curl_setopt($c, CURLOPT_HEADER, false);         // Don't retrieve headers
-    curl_setopt($c, CURLOPT_NOBODY, true);          // Don't retrieve the body
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);  // Return from curl_exec rather than echoing
-    curl_setopt($c, CURLOPT_FRESH_CONNECT, true);   // Always ensure the connection is fresh
-
-    // Timeout super fast once connected, so it goes into async.
-    curl_setopt( $c, CURLOPT_TIMEOUT, 1 );
-
-    return curl_exec( $c );
-
-    ignore_user_abort();
-    set_time_limit(0);
-
+    
+    fetch_web_data($acc_req->to_url());
   }
 
   if ($vbulletin->options['gimmie_enable_global'] == 1 && $vbulletin->options['gimmie_trigger_perthreadratingreceived'] == 1)
@@ -71,7 +55,7 @@ if (in_array($threadinfo[forumid], $forumarray) || $vbulletin->options['gimmie_t
     $acc_req          = OAuthRequest::from_consumer_and_token($consumer, $token, "GET", $endpoint, $params);
     $acc_req->sign_request($sig_method, $consumer, $token);
 
-    file_get_contents($acc_req->to_url());
+    fetch_web_data($acc_req->to_url());
     return;
   
   }

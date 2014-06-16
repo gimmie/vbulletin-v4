@@ -300,7 +300,7 @@ class OAuthRequest {
                      'application/x-www-form-urlencoded')
           ) {
         $post_data = OAuthUtil::parse_parameters(
-          file_get_contents(self::$POST_INPUT)
+          fetch_web_data(self::$POST_INPUT)
         );
         $parameters = array_merge($parameters, $post_data);
       }
@@ -927,7 +927,7 @@ if (!is_null($endpoint)) {
   $acc_req = OAuthRequest::from_consumer_and_token($consumer, $token, "GET", $endpoint, $params);
   $acc_req->sign_request($sig_method, $consumer, $token);
 
-  $json = file_get_contents($acc_req->to_url());
+  $json = fetch_web_data($acc_req->to_url());
 }
 
 # Removed allow CORS when deploy in production machine.
