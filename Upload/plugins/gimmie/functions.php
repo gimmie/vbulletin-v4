@@ -111,15 +111,15 @@ function fetch_web_data($url, $post_data = '', $keep_alive = false, $redirection
 $gimmie = Array(
   "gimmie_key" => $vbulletin->options['gimmie_key'],
   "gimmie_secret" => $vbulletin->options['gimmie_secret'],
-  "gimmie_trigger_login" => "vbulletin_login",
-  "gimmie_trigger_perpollpost" => "vbulletin_create_poll",
-  "gimmie_trigger_perpost" => "vbulletin__create_post",
-  "gimmie_trigger_perpostown" => "vbulletin_create_post",
-  "gimmie_trigger_perthreadrating" => "vbulletin_rate_thread",
-  "gimmie_trigger_perthreadratingreceived" => "vbulletin_rate_thread_received",
-  "gimmie_trigger_perreferral" => "vbulletin_referral",
-  "gimmie_trigger_perthread" => "vbulletin_create_thread",
-  "gimmie_trigger_perpollvote" => "vbulletin_vote_poll"
+  "gimmie_trigger_login" => "login_site",
+  "gimmie_trigger_perpollpost" => "create_poll",
+  "gimmie_trigger_perpost" => "create_post",
+  "gimmie_trigger_perpostown" => "create_post",
+  "gimmie_trigger_perthreadrating" => "rate_thread",
+  "gimmie_trigger_perthreadratingreceived" => "received_thread_rating",
+  "gimmie_trigger_perreferral" => "refer_a_friend",
+  "gimmie_trigger_perthread" => "create_thread",
+  "gimmie_trigger_perpollvote" => "vote_poll"
 );
 
 $gimmie_widget_setting = '<div id="gimmie-root"></div>
