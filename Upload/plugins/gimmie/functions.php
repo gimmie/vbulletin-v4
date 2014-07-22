@@ -155,9 +155,9 @@ var _gimmie = {
                               "leaderboard"             : {
                                 "table"                 : "alltime", //alltime,thisweek,last7days,pastweek,today,last30days,pastmonth,thismonth
                                 "hide"                  : {GIMMIE_LEADERBOARD},
-                                "mostpoints"            : {GIMMIE_LEADERBOARD_MOSTPOINTS},
-                                "mostrewards"           : {GIMMIE_LEADERBOARD_MOSTREWARDS},
-                                "mostvalues"            : {GIMMIE_LEADERBOARD_MOSTVALUES}
+                                "most_points"           : {GIMMIE_LEADERBOARD_MOSTPOINTS},
+                                "most_rewards"          : {GIMMIE_LEADERBOARD_MOSTREWARDS},
+                                "most_reward_value"     : {GIMMIE_LEADERBOARD_MOSTVALUES}
                               }
                             }
                           },
