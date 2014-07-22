@@ -3,9 +3,9 @@
 <product productid="gimmie" active="1">
   <title>Gimmie Loyalty Program</title>
   <description>Gimmie Loyalty Program Setting for vBulletin</description>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
   <url>http://www.vbulletin.org/forum/showthread.php?t=298968</url>
-  <versioncheckurl>http://www.gimmieworld.com/vbulletin/version.html</versioncheckurl>
+  <versioncheckurl>http://www.gimmie.io/vbulletin-version.php</versioncheckurl>
   <dependencies>
   </dependencies>
   <codes>
