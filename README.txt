@@ -81,6 +81,10 @@ e.g.
 - Remove "Insert Widget Root".
 - Use asyn method to call API
 
-1.2.0 (Feb 3, 2013)
+1.2.0 (Feb 3, 2014)
 - Add "Gimmie Key", "Secret Key", "Locale" field
 - Add Widget Setting
+
+1.2.1 (Jul 22, 2014)
+- Update event name to trigger
+
