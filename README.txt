@@ -16,15 +16,17 @@ Gimmie Loyalty Program integrates seamlessly with your site design and a rich ca
 1) Upload the contents of the 'Upload' folder to your forum's root.
 	(If your forum's location is http://www.example.com/forums/, the root is /forums/)
 
-2) In ACP -> Plugins & Products -> Manage Products -> Add/Import Product and put
-   ./XML/product_gimmie_lite.xml
+2) Create a vBulletin Game and complete the registration in Gimmie Portal (https://portal.gimmieworld.com/games/new)
+
+3) In ACP -> Plugins & Products -> Manage Products -> Add/Import Product and put
+   ./XML/product_gimmie.xml
    in the "OR import the XML file from your server" box and click
 
-3) Go to ACP -> Settings -> Options
+4) Go to ACP -> Settings -> Options
 
-4) Configure the setting under Gimmie Loyalty Program Setting
+5) Configure the setting under Gimmie Loyalty Program Setting. Fill in the Gimmie KEY and Gimmie Secret with the Game Key and Secret found in Gimmie Portal after creating the Game and update the option accordingly
 
-5) To add the Rewards button, Search << ul id="navtabs" >> under Styles & Templates > Search in Template. 
+6) To add the Rewards button, Search << ul id="navtabs" >> under Styles & Templates > Search in Template. 
 
 Click on "navbar" file. Find << <ul id="navtabs" class="navtabs .... >> in the Template field, add << <li><a href="javascript:;" gm-view="catalog" class="navtab"><span>Rewards</span></a></li> >> just above the </ul> 
 
@@ -37,7 +39,7 @@ e.g.
     <li><a href="javascript:;" gm-view="catalog" class="navtab"><span>Rewards</span></a></li>
 </ul>
 
-6) To add user points beside Username, Search << li class="welcomelink" >> under Styles & Templates > Search in Template. 
+7) To add user points beside Username, Search << li class="welcomelink" >> under Styles & Templates > Search in Template. 
 
 Click on "header" file. Find << li class="welcomelink" >> in the Template field, add << <span gm-view="profile" style="cursor:pointer;font-weight:bold;">(<span class="gimmie-user-points">...</span> points)</span> >> just above the </li>
 
