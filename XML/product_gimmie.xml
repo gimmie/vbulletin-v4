@@ -3,7 +3,7 @@
 <product productid="gimmie" active="1">
   <title>Gimmie Loyalty Program</title>
   <description>Gimmie Loyalty Program Setting for vBulletin</description>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <url>http://www.vbulletin.org/forum/showthread.php?t=298968</url>
   <versioncheckurl>http://www.gimmie.io/vbulletin-version.php</versioncheckurl>
   <dependencies>
@@ -89,27 +89,31 @@
     <phrasetype name="vBulletin Settings" fieldname="vbsettings">
       <phrase name="setting_gimmie_enable_global_desc" date="0" username="Gimmie" version=""><![CDATA[Enable Gimmie System?]]></phrase>
       <phrase name="setting_gimmie_enable_global_title" date="0" username="Gimmie" version=""><![CDATA[Enable]]></phrase>
-      <phrase name="setting_gimmie_key_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie KEY<br />Get your own point system by signing up <a href="hhttp://www.gimmieworld.com/sign-up/">here</a>.]]></phrase>
+      <phrase name="setting_gimmie_key_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie KEY<br />Get your own point system by signing up <a href="https://portal.gimmieworld.com/games/new">here</a>.]]></phrase>
       <phrase name="setting_gimmie_key_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie KEY]]></phrase>
-      <phrase name="setting_gimmie_secret_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie Secret<br />Get your own point system by signing up <a href="hhttp://www.gimmieworld.com/sign-up/">here</a>.]]></phrase>
-      <phrase name="setting_gimmie_secret_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie Secret]]></phrase>      
-      <phrase name="setting_gimmie_trigger_login_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event at login]]></phrase>
+      <phrase name="setting_gimmie_secret_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie Secret<br />Get your own point system by signing up <a href="https://portal.gimmieworld.com/games/new">here</a>.]]></phrase>
+      <phrase name="setting_gimmie_secret_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie Secret]]></phrase> 
+
+      <phrase name="setting_gimmie_use_email_desc" date="0" username="Gimmie" version=""><![CDATA[Use email as user ID for Gimmie (recommend if you need to shared user point across multiple platform. Warning: changing this might reset all points)]]></phrase>
+      <phrase name="setting_gimmie_use_email_title" date="0" username="Gimmie" version=""><![CDATA[Use email for Gimmie as User ID]]></phrase>      
+           
+      <phrase name="setting_gimmie_trigger_login_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user login]]></phrase>
       <phrase name="setting_gimmie_trigger_login_title" date="0" username="Gimmie" version=""><![CDATA[Login]]></phrase>
-      <phrase name="setting_gimmie_trigger_perpollpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when poll post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create a poll]]></phrase>
       <phrase name="setting_gimmie_trigger_perpollpost_title" date="0" username="Gimmie" version=""><![CDATA[Poll Post]]></phrase>
-      <phrase name="setting_gimmie_trigger_perpollvote_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when poll vote]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpollvote_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when vote a poll]]></phrase>
       <phrase name="setting_gimmie_trigger_perpollvote_title" date="0" username="Gimmie" version=""><![CDATA[Poll Vote]]></phrase>
-      <phrase name="setting_gimmie_trigger_perpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new post]]></phrase>
       <phrase name="setting_gimmie_trigger_perpost_title" date="0" username="Gimmie" version=""><![CDATA[New Post]]></phrase>
-      <phrase name="setting_gimmie_trigger_perpostown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new post (own)]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new post (own)]]></phrase>
       <phrase name="setting_gimmie_trigger_perpostown_title" date="0" username="Gimmie" version=""><![CDATA[New Post (OWN)]]></phrase>
-      <phrase name="setting_gimmie_trigger_perreferral_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when referral]]></phrase>
+      <phrase name="setting_gimmie_trigger_perreferral_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user has referral]]></phrase>
       <phrase name="setting_gimmie_trigger_perreferral_title" date="0" username="Gimmie" version=""><![CDATA[Referral]]></phrase>
-      <phrase name="setting_gimmie_trigger_perthread_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when new thread]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthread_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new thread]]></phrase>
       <phrase name="setting_gimmie_trigger_perthread_title" date="0" username="Gimmie" version=""><![CDATA[New Thread]]></phrase>
-      <phrase name="setting_gimmie_trigger_perthreadrating_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when thread rating]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadrating_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user rate a thread]]></phrase>
       <phrase name="setting_gimmie_trigger_perthreadrating_title" date="0" username="Gimmie" version=""><![CDATA[Thread Rating]]></phrase>
-      <phrase name="setting_gimmie_trigger_perthreadratingreceived_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when thread rating received]]></phrase>
+      <phrase name="setting_gimmie_trigger_perthreadratingreceived_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user receive a thread rating]]></phrase>
       <phrase name="setting_gimmie_trigger_perthreadratingreceived_title" date="0" username="Gimmie" version=""><![CDATA[Thread Rating Received]]></phrase>
       <phrase name="setting_gimmie_trigger_specificforum_desc" date="0" username="Gimmie" version=""><![CDATA[Enter the forum ID you want to trigger event. (leave blank to ignore)]]></phrase>
       <phrase name="setting_gimmie_trigger_specificforum_title" date="0" username="Gimmie" version=""><![CDATA[Specify Forum to Trigger]]></phrase>
@@ -448,82 +452,87 @@
       <setting varname="gimmie_locale" displayorder="7">
         <datatype>free</datatype>
         <defaultvalue>en</defaultvalue>
-      </setting>            
-      <setting varname="gimmie_trigger_login" displayorder="7">
+      </setting>  
+      <setting varname="gimmie_use_email" displayorder="8">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>0</defaultvalue>
+      </setting>                
+      <setting varname="gimmie_trigger_login" displayorder="9">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perthread" displayorder="8">
+      <setting varname="gimmie_trigger_perthread" displayorder="10">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpost" displayorder="9">
+      <setting varname="gimmie_trigger_perpost" displayorder="11">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpostown" displayorder="10">
+      <setting varname="gimmie_trigger_perpostown" displayorder="12">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perthreadrating" displayorder="11">
+      <setting varname="gimmie_trigger_perthreadrating" displayorder="13">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perthreadratingreceived" displayorder="12">
+      <setting varname="gimmie_trigger_perthreadratingreceived" displayorder="14">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpollpost" displayorder="13">
+      <setting varname="gimmie_trigger_perpollpost" displayorder="15">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpollvote" displayorder="14">
+      <setting varname="gimmie_trigger_perpollvote" displayorder="16">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perreferral" displayorder="15">
+      <setting varname="gimmie_trigger_perreferral" displayorder="17">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_web_responsive" displayorder="16">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting>      
-      <setting varname="gimmie_notification_timeout" displayorder="17">
-        <datatype>free</datatype>
-        <defaultvalue>10</defaultvalue>
-      </setting>        
       <setting varname="gimmie_web_responsive" displayorder="18">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
+      </setting>      
+      <setting varname="gimmie_notification_timeout" displayorder="19">
+        <datatype>free</datatype>
+        <defaultvalue>10</defaultvalue>
+      </setting>        
+      <setting varname="gimmie_web_responsive" displayorder="20">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
       </setting>            
-      <setting varname="gimmie_catalog" displayorder="19">
+      <setting varname="gimmie_catalog" displayorder="21">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting> 
-      <setting varname="gimmie_sponsor_link" displayorder="20">
+      <setting varname="gimmie_sponsor_link" displayorder="22">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>      
-      <setting varname="gimmie_profile" displayorder="21">
+      <setting varname="gimmie_profile" displayorder="23">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_profile_redemptions" displayorder="22">
+      <setting varname="gimmie_profile_redemptions" displayorder="24">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>

@@ -90,3 +90,6 @@ e.g.
 1.2.1 (Jul 22, 2014)
 - Update event name to trigger
 
+1.2.2 (Aug 11, 2014)
+- Option to use username or email as ID
+

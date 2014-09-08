@@ -66,6 +66,8 @@ if ($vbulletin->options['gimmie_enable_global'] == 1)
     }
     
     $gimmiewidget = str_replace('{GIMMIE_COUNTRY}',$country,$gimmiewidget);
+    
+    $gimmiewidget = str_replace('{GIMMIE_LOCALE}',$vbulletin->options['gimmie_locale'],$gimmiewidget);
     $gimmiewidget = str_replace('{GIMMIE_LOCALIZE}',$vbulletin->options['gimmie_localize'],$gimmiewidget);
     $gimmiewidget = str_replace('{GIMMIE_HELP_URL}',$vbulletin->options['gimmie_help_url'],$gimmiewidget);
     $gimmiewidget = str_replace('{GIMMIE_KEY}',$gimmie['gimmie_key'],$gimmiewidget);

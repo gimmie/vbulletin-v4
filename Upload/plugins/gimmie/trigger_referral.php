@@ -5,7 +5,12 @@ require_once(DIR . '/plugins/gimmie/OAuth.php');
 $usersql  = $vbulletin->db->query_read("SELECT `userid`, `username`, `email` FROM " . TABLE_PREFIX . "user WHERE `username` = '" . $_POST['referrername'] . "'");
 $user   = $vbulletin->db->fetch_array($usersql);
 
-$my_player_uid        = $user['email'];
+$my_player_uid        = $user['userid'];
+
+if ($vbulletin->options['gimmie_use_email'] == 1 )
+{
+  $my_player_uid        = $user['email'];
+}
 
 $key            = $gimmie['gimmie_key']; 
 $secret           = $gimmie['gimmie_secret']; 

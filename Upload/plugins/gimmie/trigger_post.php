@@ -2,7 +2,12 @@
 require_once(DIR . '/plugins/gimmie/functions.php');
 require_once(DIR . '/plugins/gimmie/OAuth.php');
 
-$my_player_uid        = $vbulletin->userinfo['email'];
+$my_player_uid        = $vbulletin->userinfo['userid'];
+
+if ($vbulletin->options['gimmie_use_email'] == 1 )
+{
+  $my_player_uid        = $vbulletin->userinfo['email'];
+}
 
 $key            = $gimmie['gimmie_key']; 
 $secret           = $gimmie['gimmie_secret']; 

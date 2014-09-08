@@ -4,9 +4,14 @@ include_once("./global.php");
 include_once("./plugins/gimmie/functions.php");
 
 /* configuration */
-$user_var = $vbulletin->userinfo['email'];
 
 $player_uid = '';
+$user_var        = $vbulletin->userinfo['userid'];
+
+if ($vbulletin->options['gimmie_use_email'] == 1 )
+{
+  $user_var = $vbulletin->userinfo['email'];
+}
 
 if ($vbulletin->userinfo['userid'])
 {
