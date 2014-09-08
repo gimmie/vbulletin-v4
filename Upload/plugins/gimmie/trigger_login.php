@@ -2,7 +2,7 @@
 require_once(DIR . '/plugins/gimmie/functions.php');
 require_once(DIR . '/plugins/gimmie/OAuth.php');
 
-$usersql  = $vbulletin->db->query_read("SELECT `userid`, `username`, `email` FROM " . TABLE_PREFIX . "user WHERE `userid` = '" . $vbulletin->userinfo['userid'] . "'");
+$usersql  = $vbulletin->db->query_read("SELECT `userid`, `username`, `email` FROM " . TABLE_PREFIX . "user WHERE `userid` = " . $vbulletin->db->escape_string($vbulletin->userinfo['userid']));
 
 $user   = $vbulletin->db->fetch_array($usersql);
 
