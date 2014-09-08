@@ -36,10 +36,10 @@ if (in_array($threadinfo[forumid], $forumarray) || $vbulletin->options['gimmie_t
   if ($vbulletin->options['gimmie_enable_global'] == 1 && $vbulletin->options['gimmie_trigger_perthreadratingreceived'] == 1)
   {
 
-    $threadsql  = $vbulletin->db->query_read("SELECT * FROM " . TABLE_PREFIX . "thread WHERE `threadid` = '" . $_POST['t'] . "'");
+    $threadsql  = $vbulletin->db->query_read("SELECT * FROM " . TABLE_PREFIX . "thread WHERE `threadid` = " . $vbulletin->db->escape_string($_POST['t']));
     $thread   = $vbulletin->db->fetch_array($threadsql);
 
-    $usersql  = $vbulletin->db->query_read("SELECT `userid`, `username`, `email` FROM " . TABLE_PREFIX . "user WHERE `username` = '" . $thread['postusername'] . "'");
+    $usersql  = $vbulletin->db->query_read("SELECT `userid`, `username`, `email` FROM " . TABLE_PREFIX . "user WHERE `username` = " . $vbulletin->db->escape_string($thread['postusername']));
     
     $user   = $vbulletin->db->fetch_array($usersql);
 
