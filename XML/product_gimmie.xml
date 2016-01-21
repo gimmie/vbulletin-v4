@@ -43,6 +43,27 @@
   ]]></phpcode>
     </plugin>
     <plugin active="1" executionorder="5">
+      <title>Edit Post</title>
+      <hookname>editpost_edit_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_post_edit.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Edit Post (Ajax)</title>
+      <hookname>editpost_edit_ajax</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_post_edit.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
+      <title>Delete Post</title>
+      <hookname>editpost_delete_complete</hookname>
+      <phpcode><![CDATA[
+        require(DIR . '/plugins/gimmie/trigger_post_delete.php');
+  ]]></phpcode>
+    </plugin>
+    <plugin active="1" executionorder="5">
       <title>Per Post</title>
       <hookname>newreply_post_complete</hookname>
       <phpcode><![CDATA[
@@ -92,11 +113,11 @@
       <phrase name="setting_gimmie_key_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie KEY<br />Get your own point system by signing up <a href="https://portal.gimmieworld.com/games/new">here</a>.]]></phrase>
       <phrase name="setting_gimmie_key_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie KEY]]></phrase>
       <phrase name="setting_gimmie_secret_desc" date="0" username="Gimmie" version=""><![CDATA[Input your Gimmie Secret<br />Get your own point system by signing up <a href="https://portal.gimmieworld.com/games/new">here</a>.]]></phrase>
-      <phrase name="setting_gimmie_secret_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie Secret]]></phrase> 
+      <phrase name="setting_gimmie_secret_title" date="0" username="Gimmie" version=""><![CDATA[Gimmie Secret]]></phrase>
 
       <phrase name="setting_gimmie_use_email_desc" date="0" username="Gimmie" version=""><![CDATA[Use email as user ID for Gimmie (recommend if you need to shared user point across multiple platform. Warning: changing this might reset all points)]]></phrase>
-      <phrase name="setting_gimmie_use_email_title" date="0" username="Gimmie" version=""><![CDATA[Use email for Gimmie as User ID]]></phrase>      
-           
+      <phrase name="setting_gimmie_use_email_title" date="0" username="Gimmie" version=""><![CDATA[Use email for Gimmie as User ID]]></phrase>
+
       <phrase name="setting_gimmie_trigger_login_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user login]]></phrase>
       <phrase name="setting_gimmie_trigger_login_title" date="0" username="Gimmie" version=""><![CDATA[Login]]></phrase>
       <phrase name="setting_gimmie_trigger_perpollpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create a poll]]></phrase>
@@ -105,8 +126,16 @@
       <phrase name="setting_gimmie_trigger_perpollvote_title" date="0" username="Gimmie" version=""><![CDATA[Poll Vote]]></phrase>
       <phrase name="setting_gimmie_trigger_perpost_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new post]]></phrase>
       <phrase name="setting_gimmie_trigger_perpost_title" date="0" username="Gimmie" version=""><![CDATA[New Post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostedit_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user edits a post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostedit_title" date="0" username="Gimmie" version=""><![CDATA[Edit Post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostdelete_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user deletes a post]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostdelete_title" date="0" username="Gimmie" version=""><![CDATA[Delete Post]]></phrase>
       <phrase name="setting_gimmie_trigger_perpostown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new post (own)]]></phrase>
       <phrase name="setting_gimmie_trigger_perpostown_title" date="0" username="Gimmie" version=""><![CDATA[New Post (OWN)]]></phrase>
+      <phrase name="setting_gimmie_trigger_perposteditown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user edits a post in his own thread]]></phrase>
+      <phrase name="setting_gimmie_trigger_perposteditown_title" date="0" username="Gimmie" version=""><![CDATA[Edit Post (OWN)]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostdeleteown_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user deletes a post in his own thread]]></phrase>
+      <phrase name="setting_gimmie_trigger_perpostdeleteown_title" date="0" username="Gimmie" version=""><![CDATA[Delete Post (OWN)]]></phrase>
       <phrase name="setting_gimmie_trigger_perreferral_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user has referral]]></phrase>
       <phrase name="setting_gimmie_trigger_perreferral_title" date="0" username="Gimmie" version=""><![CDATA[Referral]]></phrase>
       <phrase name="setting_gimmie_trigger_perthread_desc" date="0" username="Gimmie" version=""><![CDATA[Trigger event when user create new thread]]></phrase>
@@ -123,12 +152,12 @@
       <phrase name="setting_gimmie_country_desc" date="0" username="Gimmie" version=""><![CDATA[Select the particular country you wish to lock rewards from.]]></phrase>
       <phrase name="setting_gimmie_country_title" date="0" username="Gimmie" version=""><![CDATA[Country]]></phrase>
       <phrase name="setting_gimmie_locale_desc" date="0" username="Gimmie" version=""><![CDATA[Locale of reward content should display if available]]></phrase>
-      <phrase name="setting_gimmie_locale_title" date="0" username="Gimmie" version=""><![CDATA[Locale]]></phrase>       
+      <phrase name="setting_gimmie_locale_title" date="0" username="Gimmie" version=""><![CDATA[Locale]]></phrase>
       <phrase name="setting_gimmie_web_responsive_desc" date="0" username="Gimmie" version=""><![CDATA[Set to responsive widget.]]></phrase>
-      <phrase name="setting_gimmie_web_responsive_title" date="0" username="Gimmie" version=""><![CDATA[Responsive Widget]]></phrase>               
+      <phrase name="setting_gimmie_web_responsive_title" date="0" username="Gimmie" version=""><![CDATA[Responsive Widget]]></phrase>
       <phrase name="setting_gimmie_custom_css_desc" date="0" username="Gimmie" version=""><![CDATA[Overide the CSS to change the layout of the widget.]]></phrase>
-      <phrase name="setting_gimmie_custom_css_title" date="0" username="Gimmie" version=""><![CDATA[Custom CSS]]></phrase>      
-        
+      <phrase name="setting_gimmie_custom_css_title" date="0" username="Gimmie" version=""><![CDATA[Custom CSS]]></phrase>
+
       <phrase name="setting_gimmie_catalog_desc" date="0" username="Gimmie" version=""><![CDATA[To display reward tab]]></phrase>
       <phrase name="setting_gimmie_catalog_title" date="0" username="Gimmie" version=""><![CDATA[Display Catalog]]></phrase>
 
@@ -136,13 +165,13 @@
       <phrase name="setting_gimmie_sponsor_link_title" date="0" username="Gimmie" version=""><![CDATA[Hide Sponsor Link]]></phrase>
 
       <phrase name="setting_gimmie_profile_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile tab]]></phrase>
-      <phrase name="setting_gimmie_profile_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile]]></phrase>     
+      <phrase name="setting_gimmie_profile_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile]]></phrase>
 
       <phrase name="setting_gimmie_profile_redemptions_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile redemptions]]></phrase>
-      <phrase name="setting_gimmie_profile_redemptions_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Redemptions]]></phrase>     
-      
+      <phrase name="setting_gimmie_profile_redemptions_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Redemptions]]></phrase>
+
       <phrase name="setting_gimmie_profile_activities_desc" date="0" username="Gimmie" version=""><![CDATA[To display profile activities]]></phrase>
-      <phrase name="setting_gimmie_profile_activities_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Activities]]></phrase>     
+      <phrase name="setting_gimmie_profile_activities_title" date="0" username="Gimmie" version=""><![CDATA[Display Profile Activities]]></phrase>
 
       <phrase name="setting_gimmie_leaderboard_desc" date="0" username="Gimmie" version=""><![CDATA[To display leaderboard]]></phrase>
       <phrase name="setting_gimmie_leaderboard_title" date="0" username="Gimmie" version=""><![CDATA[Display Leaderboard]]></phrase>
@@ -161,13 +190,13 @@
 
       <phrase name="setting_gimmie_localize_desc" date="0" username="Gimmie" version=""><![CDATA[Update the content to localize the widget]]></phrase>
       <phrase name="setting_gimmie_localize_title" date="0" username="Gimmie" version=""><![CDATA[Localize Content]]></phrase>
-           
+
       <phrase name="setting_gimmie_help_desc" date="0" username="Gimmie" version=""><![CDATA[Enter the HELP content (allow HTML)]]></phrase>
-      <phrase name="setting_gimmie_help_title" date="0" username="Gimmie" version=""><![CDATA[Help]]></phrase>  
-      
+      <phrase name="setting_gimmie_help_title" date="0" username="Gimmie" version=""><![CDATA[Help]]></phrase>
+
       <phrase name="setting_gimmie_help_url_desc" date="0" username="Gimmie" version=""><![CDATA[Enter HELP URL if you want to link the HELP button to a page]]></phrase>
       <phrase name="setting_gimmie_help_url_title" date="0" username="Gimmie" version=""><![CDATA[Help URL]]></phrase>
-                
+
         <phrase name="setting_gimmie_custom_css_desc" date="0" username="Gimmie" version=""><![CDATA[Override the CSS to change the layout of the widget.]]></phrase>
         <phrase name="setting_gimmie_custom_css_title" date="0" username="Gimmie" version=""><![CDATA[Custom CSS]]></phrase>
   </phrasetype>
@@ -186,14 +215,14 @@
       <setting varname="gimmie_secret" displayorder="3">
         <datatype>free</datatype>
         <defaultvalue>CONSUMER SECRET</defaultvalue>
-      </setting>      
+      </setting>
       <setting varname="gimmie_trigger_specificforum" displayorder="4">
         <datatype>free</datatype>
       </setting>
       <setting varname="gimmie_trigger_word" displayorder="5">
         <datatype>free</datatype>
-        <optioncode>textarea</optioncode> 
-      </setting>      
+        <optioncode>textarea</optioncode>
+      </setting>
       <setting varname="gimmie_country" displayorder="6">
         <datatype>free</datatype>
         <optioncode><![CDATA[<select name=\"setting[$setting[varname]]\" id=\"sel_setting_$setting[varname]\" tabindex=\"1\">
@@ -452,12 +481,12 @@
       <setting varname="gimmie_locale" displayorder="7">
         <datatype>free</datatype>
         <defaultvalue>en</defaultvalue>
-      </setting>  
+      </setting>
       <setting varname="gimmie_use_email" displayorder="8">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>0</defaultvalue>
-      </setting>                
+      </setting>
       <setting varname="gimmie_trigger_login" displayorder="9">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
@@ -473,100 +502,120 @@
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpostown" displayorder="12">
+      <setting varname="gimmie_trigger_perpostedit" displayorder="12">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perthreadrating" displayorder="13">
+      <setting varname="gimmie_trigger_perpostdelete" displayorder="13">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perthreadratingreceived" displayorder="14">
+      <setting varname="gimmie_trigger_perpostown" displayorder="14">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpollpost" displayorder="15">
+      <setting varname="gimmie_trigger_perposteditown" displayorder="15">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perpollvote" displayorder="16">
+      <setting varname="gimmie_trigger_perpostdeleteown" displayorder="16">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_trigger_perreferral" displayorder="17">
+      <setting varname="gimmie_trigger_perthreadrating" displayorder="17">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_web_responsive" displayorder="18">
+      <setting varname="gimmie_trigger_perthreadratingreceived" displayorder="18">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
-      </setting>      
-      <setting varname="gimmie_notification_timeout" displayorder="19">
+      </setting>
+      <setting varname="gimmie_trigger_perpollpost" displayorder="19">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perpollvote" displayorder="20">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_trigger_perreferral" displayorder="21">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_web_responsive" displayorder="22">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_notification_timeout" displayorder="23">
         <datatype>free</datatype>
         <defaultvalue>10</defaultvalue>
-      </setting>        
-      <setting varname="gimmie_web_responsive" displayorder="20">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting>            
-      <setting varname="gimmie_catalog" displayorder="21">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting> 
-      <setting varname="gimmie_sponsor_link" displayorder="22">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting>      
-      <setting varname="gimmie_profile" displayorder="23">
+      </setting>
+      <setting varname="gimmie_web_responsive" displayorder="24">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_profile_redemptions" displayorder="24">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting> 
-      <setting varname="gimmie_profile_activities" displayorder="25">
+      <setting varname="gimmie_catalog" displayorder="25">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_leaderboard" displayorder="26">
-        <datatype>boolean</datatype>
-        <optioncode>yesno</optioncode>
-        <defaultvalue>1</defaultvalue>
-      </setting>      
-      <setting varname="gimmie_leaderboard_mostpoints" displayorder="27">
+      <setting varname="gimmie_sponsor_link" displayorder="26">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_leaderboard_mostrewards" displayorder="28">
+      <setting varname="gimmie_profile" displayorder="27">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
       </setting>
-      <setting varname="gimmie_leaderboard_mostvalues" displayorder="29">
+      <setting varname="gimmie_profile_redemptions" displayorder="28">
         <datatype>boolean</datatype>
         <optioncode>yesno</optioncode>
         <defaultvalue>1</defaultvalue>
-      </setting>                        
-      <setting varname="gimmie_custom_css" displayorder="30">
+      </setting>
+      <setting varname="gimmie_profile_activities" displayorder="29">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard" displayorder="30">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard_mostpoints" displayorder="31">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard_mostrewards" displayorder="32">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_leaderboard_mostvalues" displayorder="33">
+        <datatype>boolean</datatype>
+        <optioncode>yesno</optioncode>
+        <defaultvalue>1</defaultvalue>
+      </setting>
+      <setting varname="gimmie_custom_css" displayorder="34">
         <datatype>free</datatype>
         <optioncode>textarea</optioncode>
       </setting>
-      <setting varname="gimmie_localize" displayorder="31">
+      <setting varname="gimmie_localize" displayorder="35">
         <datatype>free</datatype>
         <optioncode>textarea</optioncode>
         <defaultvalue><![CDATA[
@@ -671,10 +720,10 @@
       <setting varname="gimmie_help" displayorder="32">
         <datatype>free</datatype>
         <optioncode>textarea</optioncode>
-      </setting> 
+      </setting>
       <setting varname="gimmie_help_url" displayorder="33">
         <datatype>free</datatype>
-      </setting>             
+      </setting>
     </settinggroup>
   </options>
   <helptopics>
