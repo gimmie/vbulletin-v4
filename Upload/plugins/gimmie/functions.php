@@ -1,111 +1,130 @@
 <?php
 function fetch_web_data($url, $post_data = '', $keep_alive = false, $redirection_level = 0)
 {
-	static $keep_alive_dom = null, $keep_alive_fp = null;
+  static $keep_alive_dom = null, $keep_alive_fp = null;
 
-	preg_match('~^(http)(s)?://([^/:]+)(:(\d+))?(.+)$~', $url, $match);
+  preg_match('~^(http)(s)?://([^/:]+)(:(\d+))?(.+)$~', $url, $match);
 
-	if (empty($match[1]))
-		return false;
-	
-	elseif (isset($match[1]) && $match[1] == 'http')
-	{
-		if ($keep_alive && $match[3] == $keep_alive_dom)
-			$fp = $keep_alive_fp;
-		if (empty($fp))
-		{
-			$fp = @fsockopen(($match[2] ? 'ssl://' : '') . $match[3], empty($match[5]) ? ($match[2] ? 443 : 80) : $match[5], $err, $err, 5);
-			if (!$fp)
-				return false;
-		}
+  if (empty($match[1]))
+    return false;
 
-		if ($keep_alive)
-		{
-			$keep_alive_dom = $match[3];
-			$keep_alive_fp = $fp;
-		}
+  elseif (isset($match[1]) && $match[1] == 'http')
+  {
+    if ($keep_alive && $match[3] == $keep_alive_dom)
+      $fp = $keep_alive_fp;
+    if (empty($fp))
+    {
+      $fp = @fsockopen(($match[2] ? 'ssl://' : '') . $match[3], empty($match[5]) ? ($match[2] ? 443 : 80) : $match[5], $err, $err, 5);
+      if (!$fp)
+        return false;
+    }
 
-		if (empty($post_data))
-		{
-			fwrite($fp, 'GET ' . $match[6] . ' HTTP/1.0' . "\r\n");
-			fwrite($fp, 'Host: ' . $match[3] . (empty($match[5]) ? ($match[2] ? ':443' : '') : ':' . $match[5]) . "\r\n");
-			fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
-			if ($keep_alive)
-				fwrite($fp, 'Connection: Keep-Alive' . "\r\n\r\n");
-			else
-				fwrite($fp, 'Connection: close' . "\r\n\r\n");
-		}
-		else
-		{
-			fwrite($fp, 'POST ' . $match[6] . ' HTTP/1.0' . "\r\n");
-			fwrite($fp, 'Host: ' . $match[3] . (empty($match[5]) ? ($match[2] ? ':443' : '') : ':' . $match[5]) . "\r\n");
-			fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
-			if ($keep_alive)
-				fwrite($fp, 'Connection: Keep-Alive' . "\r\n");
-			else
-				fwrite($fp, 'Connection: close' . "\r\n");
-			fwrite($fp, 'Content-Type: application/x-www-form-urlencoded' . "\r\n");
-			fwrite($fp, 'Content-Length: ' . strlen($post_data) . "\r\n\r\n");
-			fwrite($fp, $post_data);
-		}
+    if ($keep_alive)
+    {
+      $keep_alive_dom = $match[3];
+      $keep_alive_fp = $fp;
+    }
 
-		$response = fgets($fp, 768);
+    if (empty($post_data))
+    {
+      fwrite($fp, 'GET ' . $match[6] . ' HTTP/1.0' . "\r\n");
+      fwrite($fp, 'Host: ' . $match[3] . (empty($match[5]) ? ($match[2] ? ':443' : '') : ':' . $match[5]) . "\r\n");
+      fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
+      if ($keep_alive)
+        fwrite($fp, 'Connection: Keep-Alive' . "\r\n\r\n");
+      else
+        fwrite($fp, 'Connection: close' . "\r\n\r\n");
+    }
+    else
+    {
+      fwrite($fp, 'POST ' . $match[6] . ' HTTP/1.0' . "\r\n");
+      fwrite($fp, 'Host: ' . $match[3] . (empty($match[5]) ? ($match[2] ? ':443' : '') : ':' . $match[5]) . "\r\n");
+      fwrite($fp, 'User-Agent: PHP/SMF' . "\r\n");
+      if ($keep_alive)
+        fwrite($fp, 'Connection: Keep-Alive' . "\r\n");
+      else
+        fwrite($fp, 'Connection: close' . "\r\n");
+      fwrite($fp, 'Content-Type: application/x-www-form-urlencoded' . "\r\n");
+      fwrite($fp, 'Content-Length: ' . strlen($post_data) . "\r\n\r\n");
+      fwrite($fp, $post_data);
+    }
 
-		if ($redirection_level < 3 && preg_match('~^HTTP/\S+\s+30[127]~i', $response) === 1)
-		{
-			$header = '';
-			$location = '';
-			while (!feof($fp) && trim($header = fgets($fp, 4096)) != '')
-				if (strpos($header, 'Location:') !== false)
-					$location = trim(substr($header, strpos($header, ':') + 1));
+    $response = fgets($fp, 768);
 
-			if (empty($location))
-				return false;
-			else
-			{
-				if (!$keep_alive)
-					fclose($fp);
-				return fetch_web_data($location, $post_data, $keep_alive, $redirection_level + 1);
-			}
-		}
+    if ($redirection_level < 3 && preg_match('~^HTTP/\S+\s+30[127]~i', $response) === 1)
+    {
+      $header = '';
+      $location = '';
+      while (!feof($fp) && trim($header = fgets($fp, 4096)) != '')
+        if (strpos($header, 'Location:') !== false)
+          $location = trim(substr($header, strpos($header, ':') + 1));
 
-		elseif (preg_match('~^HTTP/\S+\s+20[01]~i', $response) === 0)
-			return false;
+      if (empty($location))
+        return false;
+      else
+      {
+        if (!$keep_alive)
+          fclose($fp);
+        return fetch_web_data($location, $post_data, $keep_alive, $redirection_level + 1);
+      }
+    }
 
-		while (!feof($fp) && trim($header = fgets($fp, 4096)) != '')
-		{
-			if (preg_match('~content-length:\s*(\d+)~i', $header, $match) != 0)
-				$content_length = $match[1];
-			elseif (preg_match('~connection:\s*close~i', $header) != 0)
-			{
-				$keep_alive_dom = null;
-				$keep_alive = false;
-			}
+    elseif (preg_match('~^HTTP/\S+\s+20[01]~i', $response) === 0)
+      return false;
 
-			continue;
-		}
+    while (!feof($fp) && trim($header = fgets($fp, 4096)) != '')
+    {
+      if (preg_match('~content-length:\s*(\d+)~i', $header, $match) != 0)
+        $content_length = $match[1];
+      elseif (preg_match('~connection:\s*close~i', $header) != 0)
+      {
+        $keep_alive_dom = null;
+        $keep_alive = false;
+      }
 
-		$data = '';
-		if (isset($content_length))
-		{
-			while (!feof($fp) && strlen($data) < $content_length)
-				$data .= fread($fp, $content_length - strlen($data));
-		}
-		else
-		{
-			while (!feof($fp))
-				$data .= fread($fp, 4096);
-		}
+      continue;
+    }
 
-		if (!$keep_alive)
-			fclose($fp);
-	}
-	else
-	{
-		$data = false;
-	}
+    $data = '';
+    if (isset($content_length))
+    {
+      while (!feof($fp) && strlen($data) < $content_length)
+        $data .= fread($fp, $content_length - strlen($data));
+    }
+    else
+    {
+      while (!feof($fp))
+        $data .= fread($fp, 4096);
+    }
 
-	return $data;
+    if (!$keep_alive)
+      fclose($fp);
+  }
+  else
+  {
+    $data = false;
+  }
+
+  return $data;
+}
+
+
+function gimmie_match($message)
+{
+  $wordarray = explode(",", $vbulletin->options['gimmie_trigger_word']);
+  $wordarray = array_map('trim',$wordarray);
+
+  $wordsearch1 = implode("\W|\W",$wordarray);
+  $pattern1 = "\W".$wordsearch1."\W";
+
+  $wordsearch2 = implode("\W|^",$wordarray);
+  $pattern2 = "^".$wordsearch2."\W";
+
+  $wordsearch3 = implode("$|\W",$wordarray);
+  $pattern3 = "\W".$wordsearch3."$";
+
+  $pattern = "/(".$pattern1."|".$pattern2."|".$pattern3.")/i";
+  return preg_match($pattern, $message);
 }
 
 $gimmie = Array(
@@ -115,12 +134,16 @@ $gimmie = Array(
   "gimmie_trigger_perpollpost" => "create_poll",
   "gimmie_trigger_perpost" => "create_post",
   "gimmie_trigger_perpostown" => "create_post",
+  "edit_post_event" => "edit_post",
+  "edit_own_post_event" => "edit_post",
+  "delete_post_event" => "delete_post",
   "gimmie_trigger_perthreadrating" => "rate_thread",
   "gimmie_trigger_perthreadratingreceived" => "received_thread_rating",
   "gimmie_trigger_perreferral" => "refer_a_friend",
   "gimmie_trigger_perthread" => "create_thread",
   "gimmie_trigger_perpollvote" => "vote_poll"
 );
+
 
 $gimmie_widget_setting = '<div id="gimmie-root"></div>
 <script type="text/javascript">
