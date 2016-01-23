@@ -12,7 +12,6 @@ $sig_method         = new OAuthSignatureMethod_HMAC_SHA1();
 $consumer         = new OAuthConsumer($key, $secret, NULL);
 $token            = new OAuthConsumer($access_token, $access_token_secret);
 
-file_put_contents(DIR . '/plugins/gimmie/logs', "Being deleted!!!!!!!!!!!!!!!!!!!\n", FILE_APPEND);
 if ($vbulletin->options['gimmie_use_email'] == 1 )
 {
   $my_player_uid        = $vbulletin->userinfo['email'];
@@ -35,9 +34,9 @@ if (in_array($threadinfo[forumid], $forumarray) || $vbulletin->options['gimmie_t
   if ($vbulletin->options['gimmie_enable_global'] == 1)
   {
     //pick event_name
-    $event_name = $gimmie['delete_post_event'];
+    $event_name = $gimmie['remove_matching_post_event'];
     //trigger if no trigger word list, or if word list matched
-    if ($vbulletin->options['gimmie_trigger_word'] == "" || gimmie_match($postinfo['pagetext']) )
+    if ( gimmie_match($postinfo['pagetext'], $vbulletin->options['gimmie_trigger_word']) )
     {
       // file_put_contents(DIR . '/plugins/gimmie/logs', "Trigger word matched deleting!!\n", FILE_APPEND);
       // file_put_contents(DIR . '/plugins/gimmie/logs', $postinfo['pagetext']."\n", FILE_APPEND);
