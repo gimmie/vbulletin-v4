@@ -3,13 +3,13 @@
 <product productid="gimmie" active="1">
   <title>Gimmie Loyalty Program</title>
   <description>Gimmie Loyalty Program Setting for vBulletin</description>
-  <version>1.2.2</version>
+  <version>1.3.0</version>
   <url>http://www.vbulletin.org/forum/showthread.php?t=298968</url>
   <versioncheckurl>http://www.gimmie.io/vbulletin-version.php</versioncheckurl>
   <dependencies>
   </dependencies>
   <codes>
-    <code version="1.1.0">
+    <code version="1.3.0">
       <installcode />
       <uninstallcode />
     </code>
