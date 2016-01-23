@@ -109,9 +109,14 @@ function fetch_web_data($url, $post_data = '', $keep_alive = false, $redirection
 }
 
 
-function gimmie_match($message)
+function gimmie_match($message, $trigger_words)
 {
-  $wordarray = explode(",", $vbulletin->options['gimmie_trigger_word']);
+  if( $trigger_words == "" )
+  {
+    return true;
+  }
+
+  $wordarray = explode(",", $trigger_words);
   $wordarray = array_map('trim',$wordarray);
 
   $wordsearch1 = implode("\W|\W",$wordarray);
