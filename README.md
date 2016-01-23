@@ -99,6 +99,9 @@ History (Changelog)
 1.2.2 (Aug 11, 2014)
 - Option to use username or email as ID
 
+1.3 (Jan 23, 2016)
+- Trigger edit_post_to_match and remove_matching_post when editing or deleting posts
+
 
 
 License
