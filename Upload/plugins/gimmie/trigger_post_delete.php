@@ -12,6 +12,7 @@ $sig_method         = new OAuthSignatureMethod_HMAC_SHA1();
 $consumer         = new OAuthConsumer($key, $secret, NULL);
 $token            = new OAuthConsumer($access_token, $access_token_secret);
 
+file_put_contents(DIR . '/plugins/gimmie/logs', "Being deleted!!!!!!!!!!!!!!!!!!!\n", FILE_APPEND);
 if ($vbulletin->options['gimmie_use_email'] == 1 )
 {
   $my_player_uid        = $vbulletin->userinfo['email'];
@@ -28,27 +29,19 @@ if ($vbulletin->options['gimmie_trigger_specificforum'] != "")
 if (in_array($threadinfo[forumid], $forumarray) || $vbulletin->options['gimmie_trigger_specificforum'] == "")
 {
 
-  $threadsql  = $vbulletin->db->query_read("SELECT * FROM " . TABLE_PREFIX . "thread WHERE `threadid` = '" . $_POST['threadid'] . "'");
-  $thread   = $vbulletin->db->fetch_array($threadsql);
+  // $threadsql  = $vbulletin->db->query_read("SELECT * FROM " . TABLE_PREFIX . "thread WHERE `threadid` = '" . $_POST['threadid'] . "'");
+  // $thread   = $vbulletin->db->fetch_array($threadsql);
 
   if ($vbulletin->options['gimmie_enable_global'] == 1)
   {
     //pick event_name
-    $event_name = "";
-    if($vbulletin->options['gimmie_trigger_perpostedit'] == 1 && $thread['postusername'] != $vbulletin->userinfo['username'])
-    {
-      $event_name = $gimmie['edit_post_event'];
-    } elseif($vbulletin->options['gimmie_trigger_perposteditown'] == 1 && $thread['postusername'] == $vbulletin->userinfo['username']) {
-      $event_name = $gimmie['edit_own_post_event'];
-    }
-
+    $event_name = $gimmie['delete_post_event'];
     //trigger if no trigger word list, or if word list matched
-    if ($vbulletin->options['gimmie_trigger_word'] == "" || gimmie_match($edit['message']) )
-      //TODO: check if the old message was originally a match, if so deduct point
+    if ($vbulletin->options['gimmie_trigger_word'] == "" || gimmie_match($postinfo['pagetext']) )
     {
-      // file_put_contents(DIR . '/plugins/gimmie/logs', "Trigger word matched!!\n", FILE_APPEND);
-      // file_put_contents(DIR . '/plugins/gimmie/logs', $edit['message']."\n", FILE_APPEND);
-      $endpoint           = "https://api.gimmieworld.com/1/trigger.json?async=webnotify&source_uid=".$vbulletin->options['bburl']."&event_name=" . $event_name;
+      // file_put_contents(DIR . '/plugins/gimmie/logs', "Trigger word matched deleting!!\n", FILE_APPEND);
+      // file_put_contents(DIR . '/plugins/gimmie/logs', $postinfo['pagetext']."\n", FILE_APPEND);
+      $endpoint         = "https://api.gimmieworld.com/1/trigger.json?async=webnotify&source_uid=".$vbulletin->options['bburl']."&event_name=" . $event_name;
       $acc_req          = OAuthRequest::from_consumer_and_token($consumer, $token, "GET", $endpoint, $params);
       $acc_req->sign_request($sig_method, $consumer, $token);
 
