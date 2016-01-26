@@ -33,26 +33,28 @@ INSTALLATION
 
 6. To add the Rewards button, Search << ul id="navtabs" >> under Styles & Templates > Search in Template.
 
-  Click on "navbar" file. Find << <ul id="navtabs" class="navtabs .... >> in the Template field,
+  Click on "navbar" file. Find `<ul id="navtabs" class="navtabs .... ` in the Template field,
   add `<li><a href="javascript:;" gm-view="catalog" class="navtab"><span>Rewards</span></a></li>` just above the `</ul>`
 
   e.g.
-  ```
+  
+  ````
   <ul id="navtabs" class="navtabs floatcontainer<vb:if condition="$show['member'] AND $notifications_total"> notify</vb:if>">
       {vb:raw template_hook.navtab_start}
       {vb:raw navigation}
       {vb:raw template_hook.navtab_end}
       <li><a href="javascript:;" gm-view="catalog" class="navtab"><span>Rewards</span></a></li>
   </ul>
-  ```
+  ````
+  
 7. To add user points beside Username, Search << li class="welcomelink" >> under Styles & Templates > Search in Template.
 
   Click on "header" file. Find `li class="welcomelink"` in the Template field, add `<span gm-view="profile" style="cursor:pointer;font-weight:bold;">(<span class="gimmie-user-points">...</span> points)</span>` just above the `</li>`
 
   e.g.
-  ```
+  ````
   <li class="welcomelink">{vb:rawphrase welcome_x_link_y, {vb:raw bbuserinfo.username}, {vb:link member, {vb:raw bbuserinfo}}}<span gm-view="profile" style="cursor:pointer;font-weight:bold;">(<span class="gimmie-user-points">...</span> points)</span></li>
-  ```
+  ````
 
 UPGRADE INSTRUCTIONS
 ----------------------------------------
@@ -61,6 +63,7 @@ UPGRADE INSTRUCTIONS
 
 2. Import the product XML file (product_gimmie.xml) into the Product Manager in AdminCP.
    (The XML file is located in the /XML folder)
+3. Upgrading to 1.3.0: create events `edit_post_to_match` and `remove_matching_post` in Gimmie portal.
 
 
 Removal
